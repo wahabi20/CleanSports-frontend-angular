@@ -1,0 +1,70 @@
+
+<div class="parent">
+     <img  src="assets/img.jpg"   class="bg-img float-right" > 
+
+     <div class="container"> 
+         
+            <mat-card>
+              <mat-card-content>
+                <div class="header">
+                  <P>Sign Into Your Account </P>
+                </div>
+                <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+                  <div class="emailInput">
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Nom d'utilisateur</mat-label>
+                      <input
+                        formControlName="email"
+                        matInput
+                        placeholder="Enter email address" required
+                        
+                      />
+                      <mat-error *ngIf="!loginForm.controls['email'].valid">
+                          Email is required
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <span>
+                      <a class="text-link"  class="aLink clicable "  (click)="confirmEmail()">Forgot Password?</a>
+                    </span>
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Password</mat-label>
+                      <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+                    
+                      <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>
+                            {{hide ? 'visibility_off' : 'visibility'}}
+                        </mat-icon>
+                      </button>
+                      <mat-error *ngIf="!loginForm.controls['password'].valid">
+                          Password is required
+                        </mat-error>
+                      </mat-form-field>
+
+                      <div class="checkbox">
+                          <label>
+                                  <input name="remember" value="yes" type="checkbox"> 
+                                  Remember Me
+                          </label>
+
+                      </div>
+
+                  </div>
+                  <button mat-flat-button color="primary">Login</button>
+                </form>
+
+                <div class="button-row">
+                  <span>
+                    <a   class="clicable"  (click)="addNewUser()">Create New Account</a>
+                  </span>
+                </div>
+              </mat-card-content>
+            </mat-card>
+                    
+
+     </div>
+</div>
+
