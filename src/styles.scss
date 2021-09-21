@@ -3,6 +3,14 @@
 @import "~font-awesome/css/font-awesome.min.css";
 
 
+
+
+* {/* pour elimine la valeur ajouter de border et valide le properite float:left: ;*/
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 * {
     margin: 0;
     padding: 0;

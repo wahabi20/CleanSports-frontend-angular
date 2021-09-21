@@ -2,12 +2,12 @@
 <div class="parent">
      <img  src="assets/img.jpg"   class="bg-img float-right" > 
 
-     <div class="container"> 
+    
          
             <mat-card>
               <mat-card-content>
                 <div class="header">
-                  <P>Sign Into Your Account </P>
+                  <P> Connectez-vous à votre compte </P>
                 </div>
                 <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
                   <div class="emailInput">
@@ -26,11 +26,9 @@
                   </div>
 
                   <div>
-                    <span>
-                      <a class="text-link"  class="aLink clicable "  (click)="confirmEmail()">Forgot Password?</a>
-                    </span>
+                    
                     <mat-form-field class="full-width" appearance="outline">
-                      <mat-label>Password</mat-label>
+                      <mat-label>Mot de passe</mat-label>
                       <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
                     
                       <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
@@ -44,27 +42,43 @@
                         </mat-error>
                       </mat-form-field>
 
-                      <div class="checkbox">
-                          <label>
-                                  <input name="remember" value="yes" type="checkbox"> 
-                                  Remember Me
-                          </label>
-
-                      </div>
-
+                    
                   </div>
-                  <button mat-flat-button color="primary">Login</button>
+                   
+                    <div class="signin">
+                       <div class="sigin_child">
+                             <a   class="clicable font_color"  (click)="addNewUser()">Enregistrer</a>
+                             <a   class="clicable spacor font_color"  (click)="confirmEmail()">Mot de passe oublié?</a>
+                       </div>
+                      
+                      <button mat-flat-button color="primary" class="float-right" >Se connecter</button>
+                    
+                  </div>
+                  
                 </form>
 
-                <div class="button-row">
-                  <span>
-                    <a   class="clicable"  (click)="addNewUser()">Create New Account</a>
-                  </span>
-                </div>
+              
               </mat-card-content>
             </mat-card>
+         
+              <div class="signin-with">
+                               
+                         <div class="sigin_avec">
+                           <a>Connectez-vous avec</a>
+                         </div>
+                                
+                              
+                              
+                            <div class="sigin_ftg">
+                                  <a   class="clicable"  (click)="addNewUser()">facebook</a>
+                                  <a   class="clicable spacor"  (click)="confirmEmail()">twitter</a>
+                                  <a   class="clicable spacor"  (click)="confirmEmail()">google</a>
+                            </div>
+                </div>
+         
+            
                     
 
-     </div>
+     
 </div>
 

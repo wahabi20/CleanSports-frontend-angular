@@ -21,20 +21,81 @@
  width: 50%;
 }
 
+.float-right
+{
+  float: right;
+
+}
+
+.clicable{
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 9px;
+}
+.spacor
+{
+  margin-left: 22%;
+}
+
+.clearfix {
+  clear: both;
+
+}
+
+.signin
+{
+   display:flex;
+    justify-content:space-between;
+   flex-direction: row;
+   margin-left: 10%;
+   margin-right: 10%;
+
+}
+
+.sigin_child
+{
+  justify-content:flex-start;
+  width:70%;
+  align-self: center;
+}
+
+.font_color
+{
+  color: rgb(37, 37, 37);
+}
+
+.signin-with
+{
+   position: absolute;
+    bottom: 95px;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
+.sigin_avec
+{
+ margin-left: 18%;
+}
+
+
 
 /*********** Start Material***************/
 
 mat-card {
-    max-width: 500px;
-    right: 4%;
+    width: 35%;
+    right: -2.5%;
     text-align: center;
     max-height: 600px;
-    margin-top: 200px;
+    margin-top: 250px;
     float: left;
+   
   }
   
-
-
   .header{
     text-align: center;
   
@@ -81,33 +142,227 @@ mat-card {
 
 
 
-
-
 /****** Start Media ***********/
-@media (max-width: 767px) { /* Mobile & Tablet Rules */
+
+/* Mobile xs */ 
+@media (max-width: 420px) { 
+  .bg-img
+  {
+  
+  height: 50% !important;
+  width: 100% !important;
+  background-size: cover;
+  object-fit: cover;
+  justify-content: center;
+  
+  }
+
+  mat-card {
+      width: 90% !important;
+      text-align: center !important;
+      justify-content:center !important;
+      align-items: center !important;
+      margin: 420px auto 20px !important;
+      right: 0 !important;
+  }
+
+.signin-with
+{
+position: fixed;
+bottom: 20px !important;
+width: 100% !important;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-left: 0 !important;
+}
+
+.sigin_avec
+{
+  justify-content: start !important;
+  margin-left: 3% !important;
+}
+
+.mat-flat-button
+{
+   width: 100% !important;
+   height: 1%;
+   font-size: 10px !important;
+   margin-top: 8px;
+}
+
+.mat-form-field
+{  
+   width: 100% !important;
+}
+
+.signin
+{
+   display:flex;
+   justify-content:space-between;
+   flex-direction: column;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+.sigin_child
+{
+  justify-content:center !important;
+  width:100% !important;
+  align-self: center;
+  
+}
+
+}
+
+
+/* Mobile & Tablet Rules */
+@media (max-width: 767px) { 
   
         .bg-img
         {
         
-        height: 40% !important;
+        height: 50% !important;
         width: 100% !important;
         background-size: cover;
         object-fit: cover;
         justify-content: center;
         
         }
-    
-
-                
-        mat-card {
-            width: 100% !important;
-            text-align: center;
-            justify-content:center !important;
-            align-items: center;
-            margin-top: 350px;
-            margin-left: 4%;
            
+        mat-card {
+            width: 90% !important;
+            text-align: center !important;
+            justify-content:center !important;
+            align-items: center !important;
+            margin: 480px auto 20px !important;
+            right: 0 !important;
         }
+
+        
+.signin-with
+{
+    position: fixed;
+    bottom: 25px !important;
+    width: 80% !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+}
+
+
+/* Small Screen Rules */
+@media (min-width: 768px) and (max-width: 991px){ 
+  .mat-form-field
+  {  
+     width: 100% !important;
+  }
+  .signin
+{
+   display:flex;
+   justify-content:space-between;
+   flex-direction: column;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+.sigin_child
+{
+  justify-content:center !important;
+  width:100% !important;
+  align-self: center;
+  
+}
+
+.mat-flat-button
+{
+   width: 100% !important;
+   height: 1%;
+   font-size: 10px !important;
+   margin-top: 10px !important;
+}
+  
+}
+
+
+/* Medium Screen Rules */
+@media (min-width: 992px) and (max-width: 1199px) { 
+  .mat-form-field
+  {  
+     width: 100% !important;
+  }
+
+  .signin
+{
+   display:flex;
+   justify-content:space-between;
+   flex-direction: column;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+.sigin_child
+{
+  justify-content:center !important;
+  width:100% !important;
+  align-self: center;
+  
+}
+
+.mat-flat-button
+{
+   width: 100% !important;
+   height: 1%;
+   font-size: 10px !important;
+   margin-top: 10px !important;
+}
+  
+.signin-with
+{
+position: fixed;
+bottom: 25px;
+width: 30%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+  
+}
+
+
+@media (min-width: 1200px){ /* Large Screen Rules */
+  
+mat-card {
+  width: 35%;
+  right: -2.5%;
+  text-align: center;
+  max-height: 600px;
+  margin-top: 220px;
+  float: left;
+ 
+}
+
+.signin-with
+{
+   position: fixed;
+    bottom: 40px;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+}
+
+
+
+
+
+
+
 
 /****** End Media ***********/
