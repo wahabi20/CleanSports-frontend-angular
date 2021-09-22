@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,11 +14,14 @@ export class LoginComponent implements OnInit {
   
   loginUserData:any;
   hide: boolean = false;
+  isLoading = false;
 
+  
 
   constructor(private fb: FormBuilder,
               private _auth: AuthService,
-              private router: Router) { }
+              private router: Router,
+              ) { }
 
   ngOnInit(): void {
   }
@@ -46,18 +50,24 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
-    console.log("login form >>>",this.loginForm.value);
 
-    
+     this.isLoading = true;
     console.log("login form >>>",this.loginForm.value);
-    this._auth.loginUser(this.loginForm.value).subscribe(resp => {
+    let dataUser = {
+      "email": this.loginForm.value.email,
+      "password": this.loginForm.value.password
+    }
+  
+    this._auth.loginUser(dataUser).subscribe(resp => {
       console.log('resp from loginUserData>>>', resp.token);
+      this.isLoading = false;
        localStorage.setItem('token',resp.token)
        //alert("login Successfully");
-      this.router.navigate(['users/home']);
+       this.router.navigate(['users/home']);
 
    }, err => {
-       console.log(err)
+       console.log(err);
+       this.isLoading = false ;
    })
   }
 

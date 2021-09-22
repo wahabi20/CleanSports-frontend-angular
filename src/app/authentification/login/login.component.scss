@@ -1,3 +1,11 @@
+.spinner
+{ 
+  
+  position: absolute;
+  bottom: 350px;
+  left: 16%;
+  z-index: 1;
+} 
 
 .parent
 {
@@ -32,7 +40,7 @@
   text-decoration: none;
   font-size: 9px;
 }
-.spacor
+.spacer
 {
   margin-left: 22%;
 }
@@ -83,8 +91,8 @@
 }
 
 
-
 /*********** Start Material***************/
+
 
 mat-card {
     width: 35%;
@@ -93,9 +101,11 @@ mat-card {
     max-height: 600px;
     margin-top: 250px;
     float: left;
-   
+    
   }
   
+  
+
   .header{
     text-align: center;
   

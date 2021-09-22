@@ -1,12 +1,17 @@
 
+  <div *ngIf="isLoading" class="spinner">
+      <app-spinner></app-spinner>
+  </div>
+
+
 <div class="parent">
      <img  src="assets/img.jpg"   class="bg-img float-right" > 
 
-    
+   
          
-            <mat-card>
+            <mat-card *ngIf="!isLoading">
               <mat-card-content>
-                <div class="header">
+                <div>
                   <P> Connectez-vous à votre compte </P>
                 </div>
                 <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
@@ -48,7 +53,7 @@
                     <div class="signin">
                        <div class="sigin_child">
                              <a   class="clicable font_color"  (click)="addNewUser()">Enregistrer</a>
-                             <a   class="clicable spacor font_color"  (click)="confirmEmail()">Mot de passe oublié?</a>
+                             <a   class="clicable spacer font_color"  (click)="confirmEmail()">Mot de passe oublié?</a>
                        </div>
                       
                       <button mat-flat-button color="primary" class="float-right" >Se connecter</button>
@@ -61,15 +66,15 @@
               </mat-card-content>
             </mat-card>
          
-              <div class="signin-with">
+              <div class="signin-with" *ngIf="!isLoading">
                                
                          <div class="sigin_avec">
                            <a>Connectez-vous avec</a>
                          </div>    
                             <div class="sigin_ftg">
-                                  <a   class="clicable"  (click)="addNewUser()">facebook</a>
-                                  <a   class="clicable spacor"  (click)="confirmEmail()">twitter</a>
-                                  <a   class="clicable spacor"  (click)="confirmEmail()">google</a>
+                                  <a class="clicable"  (click)="addNewUser()">facebook</a>
+                                  <a class="clicable spacer"  (click)="confirmEmail()">twitter</a>
+                                  <a class="clicable spacer"  (click)="confirmEmail()">google</a>
                             </div>
                 </div>
          

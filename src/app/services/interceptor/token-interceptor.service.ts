@@ -10,6 +10,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, finalize, retry } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,7 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(private injector: Injector) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authService = this.injector.get(AuthService)
     let tokenizedReq = request.clone({
        setHeaders: {
@@ -48,6 +49,6 @@ export class TokenInterceptorService implements HttpInterceptor {
   }    
 
 }
-  
+
 
   
