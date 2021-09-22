@@ -229,7 +229,15 @@ margin-left: 0 !important;
 
 /* Mobile & Tablet Rules */
 @media (max-width: 767px) { 
+      .spinner
+      { 
+        position: absolute;
+        bottom: 20%;
+        z-index: 1;
+        margin-left: 25%;
+      } 
   
+        
         .bg-img
         {
         
@@ -246,8 +254,9 @@ margin-left: 0 !important;
             text-align: center !important;
             justify-content:center !important;
             align-items: center !important;
-            margin: 480px auto 20px !important;
+            margin: 450px auto 20px !important;
             right: 0 !important;
+          
         }
 
         
@@ -266,6 +275,9 @@ margin-left: 0 !important;
 
 /* Small Screen Rules */
 @media (min-width: 768px) and (max-width: 991px){ 
+
+ 
+  
   .mat-form-field
   {  
      width: 100% !important;
@@ -300,6 +312,9 @@ margin-left: 0 !important;
 
 /* Medium Screen Rules */
 @media (min-width: 992px) and (max-width: 1199px) { 
+
+
+
   .mat-form-field
   {  
      width: 100% !important;
@@ -344,8 +359,11 @@ justify-content: space-between;
 }
 
 
-@media (min-width: 1200px){ /* Large Screen Rules */
+@media (min-width: 1200px)and (max-width: 1800px){ /* Large Screen Rules */
+
   
+
+
 mat-card {
   width: 35%;
   right: -2.5%;
@@ -353,6 +371,7 @@ mat-card {
   max-height: 600px;
   margin-top: 220px;
   float: left;
+  
  
 }
 
