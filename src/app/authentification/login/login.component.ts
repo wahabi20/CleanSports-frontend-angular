@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,9 @@ export class LoginComponent implements OnInit {
   hide: boolean = false;
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private _auth: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -38,6 +42,23 @@ export class LoginComponent implements OnInit {
   }
   
   onLogin(){
+    
+    if (!this.loginForm.valid) {
+      return;
+    }
+    console.log("login form >>>",this.loginForm.value);
+
+    
+    console.log("login form >>>",this.loginForm.value);
+    this._auth.loginUser(this.loginForm.value).subscribe(resp => {
+      console.log('resp from loginUserData>>>', resp.token);
+       localStorage.setItem('token',resp.token)
+       //alert("login Successfully");
+      this.router.navigate(['users/home']);
+
+   }, err => {
+       console.log(err)
+   })
   }
 
 
