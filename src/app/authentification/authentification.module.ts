@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HomeComponent } from './home/home.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -24,7 +25,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule
   ],
  
   

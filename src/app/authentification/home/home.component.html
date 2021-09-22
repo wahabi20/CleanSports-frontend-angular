@@ -1,1 +1,10 @@
-<p>home works!</p>
+<button  class="icon-position"  mat-button [matMenuTriggerFor]="belowMenu"><mat-icon>account_balance_wallet</mat-icon></button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+  <button mat-menu-item   *ngIf="!_authService.loggedIn()"    routerLink="users/login"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</button>
+  <button mat-menu-item   *ngIf="!_authService.loggedIn()"  routerLink="users/register"  routerLinkActive="active" >Register</button>
+  <button mat-menu-item    class="clicable"    *ngIf="_authService.loggedIn()"    routerLinkActive="active"  (click)="_authService.logoutUser()">Logout</button>
+</mat-menu>
+
+
+
+<h1 class="text-center mt-5">Welcom To CLEAN SPORTS !!!</h1>

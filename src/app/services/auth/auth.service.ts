@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Login } from 'src/app/models/model.login';
 import { environment } from 'src/environments/environment';
 
@@ -8,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private _router:Router) { }
 
   
 
@@ -28,6 +29,15 @@ getToken(){
   return localStorage.getItem('token')
 }
 
+logoutUser(){
+  localStorage.removeItem('token');
+  this._router.navigate(['users/login']);
+}
 
+
+loggedIn(){
+  //if the token exist in the localstorge return true else return false 
+  return !!localStorage.getItem('token');
+}
 
 }
