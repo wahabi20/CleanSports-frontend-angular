@@ -74,8 +74,7 @@ export class RegisterComponent implements OnInit {
       console.log('resp from RegisterUserData>>>', resp.token);
       this.isLoading = false;
       this.message = "Utilisateur enregistré avec succès"
-      
-       this._router.navigate(['users/login']);
+      // this._router.navigate(['users/login']);
      
 
    }, err => {

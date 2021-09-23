@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   
-  loginUserData:any;
+  
   hide: boolean = false;
   isLoading = false;
   error: string = "";

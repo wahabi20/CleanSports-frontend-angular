@@ -4,6 +4,7 @@ import { EmailConfirmComponent } from './authentification/emailconfirm/email-con
 import { HomeComponent } from './authentification/home/home.component';
 import { LoginComponent } from './authentification/login/login.component';
 import { RegisterComponent } from './authentification/register/register.component';
+import { ResetPasswordComponent } from './authentification/resetpassword/reset-password/reset-password.component';
 
 const routes: Routes = [
      {path: 'users',
@@ -13,6 +14,7 @@ const routes: Routes = [
                 { path: 'register', component: RegisterComponent},
                 { path: 'home', component: HomeComponent},
                 { path: 'emailconfirm', component: EmailConfirmComponent},
+                { path: 'reset', component: ResetPasswordComponent},
                
       ]},
 

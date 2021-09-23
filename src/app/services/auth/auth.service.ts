@@ -9,6 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
+  
+  private _resetPasswordUrl = "http://localhost:3000/cleansports/api/users/reset/"
+
+
   constructor(private http:HttpClient, private _router:Router) { }
 
   
@@ -51,6 +55,17 @@ loggedIn(){
 forgetPassowrd(email:string){
   let host= environment.host;
   return this.http.put<any>(host+"/cleansports/api/users/forgot-password",email);
+}
+
+resetPassword(data:any){
+  let host= environment.host;
+  console.log("data from reset components>>>", data)
+ const dataReset = {
+     "newPass": data.dataForm.password,
+     "newPassConfirm": data.dataForm.passwordConfirm
+  }
+  return this.http.put<any>(host+"/cleansports/api/users/reset/"+ `${data.resteTokenparams}`, dataReset);
+
 }
 
 }
