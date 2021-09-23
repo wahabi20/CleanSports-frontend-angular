@@ -15,7 +15,7 @@
               <div>
                 <P> Creer votre compte </P>
               </div>
-              <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+              <form (ngSubmit)="onRegister()" name="registerForm" [formGroup]="registerForm">
 
                 <div>
                   <mat-form-field class="full-width" appearance="outline">
@@ -26,7 +26,7 @@
                       placeholder="Enter votre nom" required
                       
                     />
-                     <mat-error *ngIf="!loginForm.controls.name.valid">
+                     <mat-error *ngIf="!registerForm.controls.name.valid">
                         Nom est requis
                       </mat-error>
                      </mat-form-field>
@@ -41,7 +41,7 @@
                       placeholder="Prénom" required
                       
                     />
-                     <mat-error *ngIf="!loginForm.controls.lastname.valid">
+                     <mat-error *ngIf="!registerForm.controls.lastname.valid">
                          Prénom est requis
                       </mat-error>
                      </mat-form-field>
@@ -57,7 +57,7 @@
                       placeholder="Entrer l'address e-mail" required
                       
                     />
-                    <mat-error *ngIf="!loginForm.controls['email'].valid">
+                    <mat-error *ngIf="!registerForm.controls['email'].valid">
                         E-mail est requis
                       </mat-error>
                   </mat-form-field>
@@ -77,7 +77,7 @@
                           {{hide ? 'visibility_off' : 'visibility'}}
                       </mat-icon>
                     </button>
-                    <mat-error *ngIf="!loginForm.controls['password'].valid">
+                    <mat-error *ngIf="!registerForm.controls['password'].valid">
                         Mot de passe est requis
                       </mat-error>
                     </mat-form-field>
@@ -89,8 +89,8 @@
                   
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Confirmer mot de passe</mat-label>
-                    <input formControlName="password" matInput type="password" required />
-                    <mat-error *ngIf="!loginForm.controls['password'].valid">
+                    <input formControlName="passwordConfirm" matInput type="password" required />
+                    <mat-error *ngIf="!registerForm.controls['passwordConfirm'].valid">
                         Password is required
                       </mat-error>
                     </mat-form-field>
@@ -107,7 +107,7 @@
                       placeholder="Adresse" required
                       
                     />
-                     <mat-error *ngIf="!loginForm.controls.address.valid">
+                     <mat-error *ngIf="!registerForm.controls.address.valid">
                          Adresse est requis
                       </mat-error>
                      </mat-form-field>
@@ -115,32 +115,41 @@
 
                  <div>
                   <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Code postal/Ville</mat-label>
+                    <mat-label>Numéro de téléphone</mat-label>
                     <input
-                      formControlName="code"
+                      formControlName="phone"
                       matInput
-                      placeholder="Entrer votre code postal/ville" required
+                      placeholder="Entrer votre numéro de téléphone" required
                       
                     />
-                     <mat-error *ngIf="!loginForm.controls.code.valid">
-                         Code postal/Ville est requis
+                     <mat-error *ngIf="!registerForm.controls.phone.valid">
+                         Numéro de téléphone est requis
                       </mat-error>
                      </mat-form-field>
                  </div>
 
+               
                  <div>
-                  <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Date de naissance</mat-label>
-                    <input
-                      formControlName="date"
-                      matInput
-                      placeholder="Entrer votre date de naissance" required
-                      
-                    />
-                     <mat-error *ngIf="!loginForm.controls.date.valid">
-                         Date de naissance est requis
-                      </mat-error>
-                     </mat-form-field>
+                  <mat-form-field  class="full-width" appearance="outline">
+                   <mat-label>Date de naissance</mat-label>
+                   <input  
+                     formControlName="date" 
+                     matInput   
+                     placeholder="Entrer votre date de naissance" required  
+                     [matDatepicker]="picker" >
+                     <mat-error *ngIf="!registerForm.controls.date.valid">
+                      Date de naissance est requis
+                    </mat-error>
+                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                   <mat-datepicker  ngDefaultControl   #picker color="primary"></mat-datepicker>
+                  </mat-form-field>
+                  
+                      <p *ngIf="message" style="color: green; font-size: 8px;">
+                        {{ message }}
+                      </p>
+                      <p *ngIf="error" class="paragraph">
+                        {{ error }}
+                      </p>
                  </div>
 
 

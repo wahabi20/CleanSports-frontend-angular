@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
   loginUserData:any;
   hide: boolean = false;
   isLoading = false;
-
+  message: string = "";
+  error: string = "";
   
   constructor(private fb: FormBuilder,
     private _auth: AuthService,
@@ -26,63 +27,74 @@ export class RegisterComponent implements OnInit {
 
 
   
-  loginForm: FormGroup = this.fb.group({
+  registerForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     name: ['', [Validators.required, Validators.minLength(6)]],
     lastname: ['', [Validators.required, Validators.minLength(6)]],
     address: ['', [Validators.required, Validators.minLength(6)]],
-    code: ['', [Validators.required, Validators.minLength(6)]],
     date: ['', [Validators.required, Validators.minLength(6)]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    phone: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    passwordConfirm: ['', [Validators.required, Validators.minLength(6)]]
   })
 
 
 
   
-  gotologinUser(){ 
+  gotologinUser()
+  { 
     this._router.navigate(['users/login']);
   }
 
-  addNewUser(){
+
+  onRegister()
+
+  {console.log(" register form >>>",this.registerForm.value);
+
+
     
+    if (!this.registerForm.valid) {
+      return;
+    }
+
+     this.isLoading = true;
+   
+    let dataUser = {
+      "first_Name": this.registerForm.value.name,
+      "last_Name": this.registerForm.value.lastname,
+      "email": this.registerForm.value.email,
+      "password": this.registerForm.value.password,
+      "password_Confirm": this.registerForm.value.passwordConfirm,
+      "address":this.registerForm.value.address,
+      "dateOfBirth": this.registerForm.value.date,
+      "phone_Number":this.registerForm.value.phone
+    }
+  
+    this._auth.registerUser(dataUser).subscribe(resp => {
+      console.log('resp from RegisterUserData>>>', resp.token);
+      this.isLoading = false;
+      this.message = "Utilisateur enregistré avec succès"
+      
+       this._router.navigate(['users/login']);
+     
+
+   }, err => {
+       
+       this.isLoading = false ;
+       this.error = err.error.message;
+       console.log("this error>>>", err)
+   })
+   
   }
+
+
 
   confirmEmail(){
     
   }
   
-  onRegister()
-  {
-    
-  }
 
 
-
-  onLogin(){
-    
-    if (!this.loginForm.valid) {
-      return;
-    }
-
-     this.isLoading = true;
-    console.log("login form >>>",this.loginForm.value);
-    let dataUser = {
-      "email": this.loginForm.value.email,
-      "password": this.loginForm.value.password
-    }
-  
-    this._auth.loginUser(dataUser).subscribe(resp => {
-      console.log('resp from loginUserData>>>', resp.token);
-      this.isLoading = false;
-       localStorage.setItem('token',resp.token)
-       //alert("login Successfully");
-       this._router.navigate(['users/home']);
-
-   }, err => {
-       console.log(err);
-       this.isLoading = false ;
-   })
-  }
 
 
 

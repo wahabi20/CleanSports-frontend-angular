@@ -23,6 +23,12 @@ loginUser(user:Login){
   return this.http.post<any>(host+"/cleansports/api/auth/login",user);
 }
 
+ 
+registerUser(user:any){
+  console.log("register  from server >>>", user)
+  let host= environment.host;
+  return this.http.post<any>(host+"/cleansports/api/users/register",user);
+}
 
 
 getToken(){
