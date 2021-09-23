@@ -15,12 +15,12 @@ export class LoginComponent implements OnInit {
   loginUserData:any;
   hide: boolean = false;
   isLoading = false;
-
+  error: string = "";
   
 
   constructor(private fb: FormBuilder,
               private _auth: AuthService,
-              private router: Router,
+              private _router: Router,
               ) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   addNewUser(){
-    
+    this._router.navigate(['users/register']);
   }
 
   confirmEmail(){
@@ -63,11 +63,14 @@ export class LoginComponent implements OnInit {
       this.isLoading = false;
        localStorage.setItem('token',resp.token)
        //alert("login Successfully");
-       this.router.navigate(['users/home']);
+       this._router.navigate(['users/home']);
 
    }, err => {
        console.log(err);
        this.isLoading = false ;
+       this.error = err.error;
+       console.log("this error>>>", this.error)
+       
    })
   }
 

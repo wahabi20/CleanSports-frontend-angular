@@ -1,0 +1,466 @@
+
+.errormessage
+{
+  width: 20%;
+  background-color:red;
+  padding: 5px;
+  margin: 0 auto;
+
+}
+
+
+.spinner
+{ 
+  
+  position: absolute;
+  bottom: 350px;
+  left: 16%;
+  z-index: 1;
+} 
+
+.parent
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.bg-img
+{
+   position:absolute;
+   height: 100%;
+   width: 60%;
+   background-size: cover;
+   right: 0%;
+   object-fit: cover;
+  
+}
+
+.form-login{
+
+ width: 50%;
+}
+
+.float-right
+{
+  float: right;
+
+}
+
+.paragraph
+{
+  
+  font-size: 8px;
+  color: red;
+ 
+}
+
+.clicable{
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 9px;
+}
+.spacer
+{
+  margin-left: 22%;
+}
+
+.clearfix {
+  clear: both;
+
+}
+
+.signin
+{
+   display:flex;
+    justify-content:space-between;
+   flex-direction: row;
+   margin-left: 10%;
+   margin-right: 10%;
+
+}
+
+.sigin_child
+{
+  justify-content:flex-start;
+  width:70%;
+  align-self: center;
+}
+
+.font_color
+{
+  color: rgb(37, 37, 37);
+  font-size: 9px;
+  text-decoration: none;
+}
+
+
+.font_color_blue
+{
+  color: #0d6efd;
+}
+.signin-with
+{
+   position: absolute;
+    bottom: 95px;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
+.sigin_avec
+{
+ margin-left: 18%;
+}
+
+
+/*********** Start Material***************/
+
+
+mat-card {
+    width: 35%;
+    //right: -3%;
+    text-align: center;
+   // max-height: 600px;
+    margin-top: 250px;
+    float: left;
+    
+  }
+  
+  
+
+  .header{
+    text-align: center;
+  
+  }
+  .full-width {
+    width: 80%;
+  }
+  
+  .button-row {
+    padding-top: 5px;
+  }
+  
+  .button-row a {
+    margin-right: 8px;
+    text-align: center;
+  }
+  
+  .forget-password{
+    padding-left: 0px;
+  }
+  
+  .emailInput{
+    padding-top: 10px;
+  }
+  
+  .contentBody {
+    padding: 60px 1rem;
+    background :#1b6ca8;
+    display: block;
+  }
+  
+  .aLink{
+    float: right;
+    padding-right: 60px;
+    text-decoration: none;
+  }
+  
+
+
+
+/*********** End Material***************/
+
+
+
+
+
+/****** Start Media ***********/
+
+/* Mobile xs */ 
+@media (max-width: 420px) { 
+  .bg-img
+  {
+  
+  height: 50% !important;
+  width: 100% !important;
+  background-size: cover;
+  object-fit: cover;
+  justify-content: center;
+  
+  }
+
+  mat-card {
+      width: 90% !important;
+      text-align: center !important;
+      justify-content:center !important;
+      align-items: center !important;
+      margin: 420px auto 20px !important;
+      right: 0 !important;
+  }
+
+.signin-with
+{
+position: fixed;
+bottom: 20px !important;
+width: 100% !important;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-left: 0 !important;
+}
+
+.sigin_avec
+{
+  justify-content: start !important;
+  margin-left: 3% !important;
+}
+
+.mat-flat-button
+{
+   width: 100% !important;
+   height: 1%;
+   font-size: 10px !important;
+   margin-top: 8px;
+   align-self: center !important;
+}
+
+.mat-form-field
+{  
+   width: 100% !important;
+}
+
+.signin
+{
+   display:flex;
+   justify-content:space-between;
+   flex-direction: column;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+.sigin_child
+{
+  justify-content:center !important;
+  width:100% !important;
+  align-self: center;
+  
+}
+
+}
+
+
+/* Mobile & Tablet Rules */
+@media (max-width: 767px) { 
+      .spinner
+      { 
+        position: absolute;
+        bottom: 20%;
+        z-index: 1;
+        margin-left: 25%;
+      } 
+  
+        
+        .bg-img
+        {
+        
+        height: 50% !important;
+        width: 100% !important;
+        background-size: cover;
+        object-fit: cover;
+        justify-content: center;
+        
+        }
+           
+        mat-card {
+            width: 90% !important;
+            text-align: center !important;
+            justify-content:center !important;
+            align-items: center !important;
+            margin: 450px auto 20px !important;
+            right: 0 !important;
+          
+        }
+
+        
+.signin-with
+{
+    position: fixed;
+    bottom: 25px !important;
+    width: 80% !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+}
+
+
+/* Small Screen Rules */
+@media (min-width: 768px) and (max-width: 991px){ 
+
+ 
+  
+mat-card {
+  width: 35%;
+  right: -3%;
+  text-align: center;
+ // max-height: 600px;
+  margin-top: 20px;
+  float: left;
+ 
+  
+}
+
+
+
+  .mat-form-field
+  {  
+     width: 100% !important;
+  }
+  .signin
+{
+   display:flex;
+   justify-content:space-between;
+   flex-direction: column;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+.sigin_child
+{
+  justify-content:center !important;
+  width:100% !important;
+  align-self: center;
+  
+}
+
+.mat-flat-button
+{
+   width: 100% !important;
+   height: 1%;
+   font-size: 10px !important;
+   margin-top: 10px !important;
+}
+  
+}
+
+
+/* Medium Screen Rules */
+@media (min-width: 992px) and (max-width: 1199px) { 
+
+ 
+  mat-card {
+    width: 35%;
+    right: -2.5%;
+    text-align: center;
+   // max-height: 600px;
+    margin-top: 90px;
+    float: left;
+   
+   
+    
+  }
+
+  .mat-form-field
+  {  
+     width: 100% !important;
+  }
+
+  .signin
+{
+   display:flex;
+   justify-content:space-between;
+   flex-direction: column;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+.sigin_child
+{
+  justify-content:center !important;
+  width:100% !important;
+  align-self: center;
+  
+}
+
+.mat-flat-button
+{
+   width: 100% !important;
+   height: 1%;
+   font-size: 10px !important;
+   margin-top: 10px !important;
+}
+  
+.signin-with
+{
+position: fixed;
+bottom: 25px;
+width: 30%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+  
+}
+
+
+@media (min-width: 1200px){ /* Large Screen Rules */
+
+  
+
+mat-card {
+  width: 35%;
+  right: -2.5%;
+  text-align: center;
+  max-height: 800px;
+  margin-top: 2%;
+  float: left;
+ 
+  
+ 
+}
+.mat-form-field {
+  font-size: 10px;
+  font-weight: 200;
+  line-height: unset;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+}
+
+
+.signin
+{
+   display:flex;
+    justify-content:space-between;
+   flex-direction: row;
+   //margin-left: 10%;
+   //margin-right: 10%;
+   
+
+}
+.sigin_child
+{
+  display:flex;
+  width:40%;
+  
+  flex-direction: column !important;
+ 
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+/****** End Media ***********/

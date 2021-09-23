@@ -3,11 +3,10 @@
       <app-spinner></app-spinner>
   </div>
 
-
 <div class="parent">
      <img  src="assets/img.jpg"   class="bg-img float-right" > 
 
-   
+           
          
             <mat-card *ngIf="!isLoading">
               <mat-card-content>
@@ -17,15 +16,15 @@
                 <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
                   <div class="emailInput">
                     <mat-form-field class="full-width" appearance="outline">
-                      <mat-label>Nom d'utilisateur</mat-label>
+                      <mat-label>E-mail d'utilisateur</mat-label>
                       <input
                         formControlName="email"
                         matInput
-                        placeholder="Enter email address" required
+                        placeholder="Entrer l'adresse e-mail" required
                         
                       />
                       <mat-error *ngIf="!loginForm.controls['email'].valid">
-                          Email is required
+                          Nom est requis
                         </mat-error>
                     </mat-form-field>
                   </div>
@@ -43,10 +42,12 @@
                         </mat-icon>
                       </button>
                       <mat-error *ngIf="!loginForm.controls['password'].valid">
-                          Password is required
-                        </mat-error>
+                           Mot de passe est requis
+                        </mat-error>  
                       </mat-form-field>
-
+                     <p *ngIf="error" class="paragraph">
+                         {{ error }}
+                     </p>
                     
                   </div>
                    

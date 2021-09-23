@@ -1,1 +1,173 @@
-<p>register works!</p>
+
+
+  <div *ngIf="isLoading" class="spinner">
+    <app-spinner></app-spinner>
+</div>
+
+
+<div class="parent">
+   <img  src="assets/img.jpg"   class="bg-img float-right" > 
+
+ 
+       
+ <mat-card *ngIf="!isLoading">
+            <mat-card-content>
+              <div>
+                <P> Creer votre compte </P>
+              </div>
+              <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+
+                <div>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input
+                      formControlName="name"
+                      matInput
+                      placeholder="Enter votre nom" required
+                      
+                    />
+                     <mat-error *ngIf="!loginForm.controls.name.valid">
+                        Nom est requis
+                      </mat-error>
+                     </mat-form-field>
+                 </div>
+
+                 <div>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Prénom</mat-label>
+                    <input
+                      formControlName="lastname"
+                      matInput
+                      placeholder="Prénom" required
+                      
+                    />
+                     <mat-error *ngIf="!loginForm.controls.lastname.valid">
+                         Prénom est requis
+                      </mat-error>
+                     </mat-form-field>
+                 </div>
+
+
+                <div>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>E-mail</mat-label>
+                    <input
+                      formControlName="email"
+                      matInput
+                      placeholder="Entrer l'address e-mail" required
+                      
+                    />
+                    <mat-error *ngIf="!loginForm.controls['email'].valid">
+                        E-mail est requis
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+
+
+
+                <div>
+                  
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+                  
+                    <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+                      [attr.aria-pressed]="hide">
+                      <mat-icon>
+                          {{hide ? 'visibility_off' : 'visibility'}}
+                      </mat-icon>
+                    </button>
+                    <mat-error *ngIf="!loginForm.controls['password'].valid">
+                        Mot de passe est requis
+                      </mat-error>
+                    </mat-form-field>
+
+                  
+                </div>
+
+                <div>
+                  
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Confirmer mot de passe</mat-label>
+                    <input formControlName="password" matInput type="password" required />
+                    <mat-error *ngIf="!loginForm.controls['password'].valid">
+                        Password is required
+                      </mat-error>
+                    </mat-form-field>
+
+                  
+                </div>
+
+                <div>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Adresse</mat-label>
+                    <input
+                      formControlName="address"
+                      matInput
+                      placeholder="Adresse" required
+                      
+                    />
+                     <mat-error *ngIf="!loginForm.controls.address.valid">
+                         Adresse est requis
+                      </mat-error>
+                     </mat-form-field>
+                 </div>
+
+                 <div>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Code postal/Ville</mat-label>
+                    <input
+                      formControlName="code"
+                      matInput
+                      placeholder="Entrer votre code postal/ville" required
+                      
+                    />
+                     <mat-error *ngIf="!loginForm.controls.code.valid">
+                         Code postal/Ville est requis
+                      </mat-error>
+                     </mat-form-field>
+                 </div>
+
+                 <div>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Date de naissance</mat-label>
+                    <input
+                      formControlName="date"
+                      matInput
+                      placeholder="Entrer votre date de naissance" required
+                      
+                    />
+                     <mat-error *ngIf="!loginForm.controls.date.valid">
+                         Date de naissance est requis
+                      </mat-error>
+                     </mat-form-field>
+                 </div>
+
+
+                
+
+                 
+                  <div class="signin">
+                     <div class="sigin_child">
+                           <a   class="font_color">Vous avez déja un compte?</a>
+                           <a   class="clicable spacer font_color_blue"  (click)="gotologinUser()">Se connecter</a>
+                     </div>
+                    
+                    <button mat-flat-button color="primary" class="float-right" >Enregistrer</button>
+                  
+                </div>
+                
+              </form>
+
+            
+            </mat-card-content>
+          </mat-card>
+       
+           
+    
+          
+                  
+
+   
+</div>
+
