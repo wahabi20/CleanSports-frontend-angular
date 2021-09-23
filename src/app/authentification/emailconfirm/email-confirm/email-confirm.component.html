@@ -27,6 +27,13 @@
                         E-mail est requis
                       </mat-error>
                   </mat-form-field>
+
+                  <p *ngIf="message" style="color: rgba(23, 172, 23, 0.781); font-size: 8px;">
+                    {{ message }}
+                  </p>
+                  <p *ngIf="error" class="paragraph">
+                    {{ error }}
+                  </p>
                 </div>
 
              

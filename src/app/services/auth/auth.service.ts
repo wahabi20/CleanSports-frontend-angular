@@ -46,4 +46,11 @@ loggedIn(){
   return !!localStorage.getItem('token');
 }
 
+
+
+forgetPassowrd(email:string){
+  let host= environment.host;
+  return this.http.put<any>(host+"/cleansports/api/users/forgot-password",email);
+}
+
 }

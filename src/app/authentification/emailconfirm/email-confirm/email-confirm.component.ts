@@ -13,7 +13,12 @@ export class EmailConfirmComponent implements OnInit {
 
   isLoading = false;
   hide: boolean = false;
+  message: string = "";
+  error: string = "";
 
+
+
+  
   constructor(private fb: FormBuilder,
               private _auth: AuthService,
               private _router: Router) { }
@@ -31,8 +36,24 @@ export class EmailConfirmComponent implements OnInit {
 
 
   onSentEmail(){
-    console.log("login form >>>",this.EmailconfirmForm.value);
     
+    if (!this.EmailconfirmForm.valid) {
+      return;
+    }
+
+     this.isLoading = true;
+   
+    console.log("login form >>>",this.EmailconfirmForm.value);
+    this._auth.forgetPassowrd(this.EmailconfirmForm.value).subscribe( resp => {
+        console.log(resp)
+        this.isLoading = false;
+        this.message = resp.message;
+    }, err => {
+      console.log(err)
+      this.isLoading = false ;
+      this.error = err.error.message;
+      console.log("this error>>>", err)
+    })
   
  }
 
