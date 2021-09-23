@@ -1,0 +1,53 @@
+
+  <div *ngIf="isLoading" class="spinner">
+    <app-spinner></app-spinner>
+</div>
+
+<div class="parent">
+   <img  src="assets/img.jpg"   class="bg-img float-right" > 
+
+         
+       
+          <mat-card *ngIf="!isLoading">
+            <mat-card-content>
+              <div>
+                <P> changez votre mot de passe </P>
+              </div>
+              <form (ngSubmit)="onSentEmail()" name="EmailconfirmForm" [formGroup]="EmailconfirmForm">
+                <div class="emailInput">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>E-mail</mat-label>
+                    <input
+                      formControlName="email"
+                      matInput
+                      placeholder="Entrer l'adresse e-mail" required
+                      
+                    />
+                    <mat-error *ngIf="!EmailconfirmForm.controls['email'].valid">
+                        E-mail est requis
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+
+             
+                  <div class="signin">
+                     
+                    <button mat-flat-button color="primary" class="float-right" >Réinitialiser le mot de passe</button>
+                  
+                </div>
+                
+              </form>
+
+            
+            </mat-card-content>
+          </mat-card>
+       
+           
+       
+          
+                  
+
+   
+</div>
+
+

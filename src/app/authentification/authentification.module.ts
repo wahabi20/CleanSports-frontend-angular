@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HomeComponent } from './home/home.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { RouterModule } from '@angular/router';
+import { EmailConfirmComponent } from './emailconfirm/email-confirm/email-confirm.component';
 
 
 
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    EmailConfirmComponent
    
   ],
   imports: [

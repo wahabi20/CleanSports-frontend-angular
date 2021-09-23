@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
   })
 
 
-  
-  loginUser(){ 
+  emailConfirm()
+  {
+    this._router.navigate(['users/emailconfirm']);
   }
 
   addNewUser(){
