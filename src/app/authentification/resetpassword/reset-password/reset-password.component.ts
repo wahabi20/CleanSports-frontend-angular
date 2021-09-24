@@ -61,7 +61,7 @@ export class ResetPasswordComponent implements OnInit {
        console.log("resp rsete >>>", resp);
        this.isLoading = false;
         this.message = resp.message;
-        alert("mot de passe chenge avec succe");
+        alert("mot de passe changé avec succès");
         this._router.navigate(['users/login']);
 
    }, err => {

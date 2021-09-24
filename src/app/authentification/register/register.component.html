@@ -70,13 +70,8 @@
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Mot de passe</mat-label>
                     <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
-                  
-                    <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
-                      [attr.aria-pressed]="hide">
-                      <mat-icon>
-                          {{hide ? 'visibility_off' : 'visibility'}}
-                      </mat-icon>
-                    </button>
+
+                    <mat-icon matSuffix  style="cursor: pointer;"  (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     <mat-error *ngIf="!registerForm.controls['password'].valid">
                         Mot de passe est requis
                       </mat-error>
