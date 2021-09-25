@@ -12,7 +12,7 @@ export class EmailConfirmComponent implements OnInit {
 
 
   isLoading = false;
-  hide: boolean = false;
+  hide: boolean = true;
   message: string = "";
   error: string = "";
 

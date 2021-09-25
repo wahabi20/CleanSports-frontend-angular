@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   
   
-  hide: boolean = false;
+  hide: boolean = true;
   isLoading = false;
   error: string = "";
   
@@ -42,10 +42,7 @@ export class LoginComponent implements OnInit {
     this._router.navigate(['users/register']);
   }
 
-  confirmEmail(){
-    
-  }
-  
+ 
   onLogin(){
     
     if (!this.loginForm.valid) {

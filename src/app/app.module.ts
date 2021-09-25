@@ -13,9 +13,11 @@ import { AuthService } from './services/auth/auth.service';
 import { TokenInterceptorService } from './services/interceptor/token-interceptor.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
+    
    
   ],
   imports: [

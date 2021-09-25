@@ -4,21 +4,21 @@
 
 
 
-
-* {/* pour elimine la valeur ajouter de border et valide le properite float:left: ;*/
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  
+  /* You can add global styles to this file, and also import other style files */
+*{
+  box-sizing: border-box;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-  }
-  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-  html {
-    font-size: 62.5%;
-  }
-  
-  
+// Define Global Variables
+
+/* BUTTONS */
+$primary-button-color: #1877F2;
+$success-button-color: #42B72A;
+
+/* OTHER COLORS */
+$header-color: white;
+$body-color: #F0F2F5;

@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  hide: boolean = false;
+  hide: boolean = true;
   isLoading = false;
   error: string = "";
   message: string = "";

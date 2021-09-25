@@ -10,6 +10,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { RouterModule } from '@angular/router';
 import { EmailConfirmComponent } from './emailconfirm/email-confirm/email-confirm.component';
 import { ResetPasswordComponent } from './resetpassword/reset-password/reset-password.component';
+import { TestComponent } from './test/test.component';
+
 
 
 
@@ -22,8 +24,8 @@ import { ResetPasswordComponent } from './resetpassword/reset-password/reset-pas
     HomeComponent,
     SpinnerComponent,
     EmailConfirmComponent,
-    ResetPasswordComponent
-   
+    ResetPasswordComponent,
+    TestComponent
   ],
   imports: [
     CommonModule,

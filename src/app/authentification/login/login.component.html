@@ -13,7 +13,7 @@
                 <div>
                   <P> Connectez-vous à votre compte </P>
                 </div>
-                <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+                <form (ngSubmit)="onLogin()"  #form="ngForm"     name="loginForm" [formGroup]="loginForm">
                   <div class="emailInput">
                     <mat-form-field class="full-width" appearance="outline">
                       <mat-label>E-mail d'utilisateur</mat-label>
@@ -51,7 +51,7 @@
                              <a   class="clicable spacer font_color"  (click)="emailConfirm()">Mot de passe oublié?</a>
                        </div>
                       
-                      <button mat-flat-button color="primary" class="float-right" >Se connecter</button>
+                      <button mat-flat-button color="primary"   [disabled]="form.invalid || form.pending"    class="float-right" >Se connecter</button>
                     
                   </div>
                   
@@ -67,9 +67,9 @@
                            <a>Connectez-vous avec</a>
                          </div>    
                             <div class="sigin_ftg">
-                                  <a class="clicable"  (click)="addNewUser()">facebook</a>
-                                  <a class="clicable spacer"  (click)="confirmEmail()">twitter</a>
-                                  <a class="clicable spacer"  (click)="confirmEmail()">google</a>
+                                  <a class="clicable">facebook</a>
+                                  <a class="clicable spacer">twitter</a>
+                                  <a class="clicable spacer">google</a>
                             </div>
                 </div>
          
