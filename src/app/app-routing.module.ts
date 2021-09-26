@@ -1,25 +1,72 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { EmailConfirmComponent } from './authentification/emailconfirm/email-confirm/email-confirm.component';
-import { HomeComponent } from './authentification/home/home.component';
 import { LoginComponent } from './authentification/login/login.component';
 import { RegisterComponent } from './authentification/register/register.component';
 import { ResetPasswordComponent } from './authentification/resetpassword/reset-password/reset-password.component';
-import { TestComponent } from './authentification/test/test.component';
+import { HomeComponent } from './god/home/home/home.component';
+import { PlayerComponent } from './god/player/player/player.component';
+import { TeamComponent } from './god/team/team.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { GodLayoutComponent } from './layouts/god-layout/god-layout.component';
 
 const routes: Routes = [
-     {path: 'users',
-            children:[
-                { path: '', redirectTo:'login', pathMatch: 'full'},
-                { path: 'login', component:LoginComponent},
-                { path: 'register', component: RegisterComponent},
-                { path: 'home', component: HomeComponent},
-                { path: 'emailconfirm', component: EmailConfirmComponent},
-                { path: 'reset', component: ResetPasswordComponent},
-                { path: 'test', component: TestComponent},
-               
-      ]},
+
+
+ // Auth Routes
+ {
+  path:'',
+  component: AuthLayoutComponent,
+  children: [
+    {
+      path: '',
+      redirectTo: '/auth',
+      pathMatch: 'full'
+
+    },
+    { path: 'register', component: RegisterComponent},
+    { path: 'emailconfirm', component: EmailConfirmComponent},
+    { path: 'reset', component: ResetPasswordComponent},
+    {
+      path: 'auth',
+      loadChildren: () => import('./authentification/authentification.module').then(m => m.AuthentificationModule)
+    }
+  ]
+},
+
+// App Routes
+{
+  path:'',
+  component:GodLayoutComponent,
+  children: [
+    {
+      path: '',
+      redirectTo: '/home',
+      pathMatch: 'full'
+
+    },
+    { path: 'players', component: PlayerComponent},
+    { path: 'teams', component: TeamComponent},
+   
+    {
+      path: 'home',
+      loadChildren: () => import('./god/god.module').then(m => m.GodModule)
+    }
+  ]
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ];
 

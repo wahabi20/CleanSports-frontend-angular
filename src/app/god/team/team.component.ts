@@ -4,15 +4,14 @@ import { Router } from '@angular/router';
 //import {PostService} from '../../services/post.service';
 import {Subscription} from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
-
 //import {AuthService, UserData} from '../../services/auth.service';
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  selector: 'app-team',
+  templateUrl: './team.component.html',
+  styleUrls: ['./team.component.scss']
 })
-export class TestComponent implements OnInit {
+export class TeamComponent implements OnInit {
   images: any[] = [
     'https://images-na.ssl-images-amazon.com/images/I/51DR2KzeGBL._AC_.jpg',
     'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg',
@@ -44,17 +43,20 @@ export class TestComponent implements OnInit {
 */
   }
 
+  gototeams()
+  {
+    this._router.navigate(['god/teams']);
+  }
 
   gotoHome()
   {
-    this._router.navigate(['users/home']);
+    this._router.navigate(['god/home']);
   }
 
-
-
-
-
-
+  gotoplayers()
+  {
+    this._router.navigate(['god/players']);
+  }
 
 
   postMessage(form: NgForm): void {
@@ -75,4 +77,5 @@ export class TestComponent implements OnInit {
   logout(): void {
     //this.authService.Logout();
   }
+
 }

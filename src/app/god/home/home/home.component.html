@@ -12,14 +12,14 @@
     </div>
     <div class="home__header__middle">
       <div class="active">
-        <mat-icon>home</mat-icon>
+        <mat-icon routerLinkActive="active">home</mat-icon>
 
       </div>
       <div>
         <mat-icon  (click)="gotolistUser()">directions_run</mat-icon>
       </div>
       <div>
-        <mat-icon>group</mat-icon>
+        <mat-icon (click)="gototeams()">group</mat-icon>
       </div>
       <div>
         <mat-icon>store</mat-icon>
@@ -70,7 +70,8 @@
           <img
             alt=""
             mat-card-avatar
-            src="">
+            src="assets/img2.jpg">
+            <span class="name">Wahabi malek</span>
           <span class="name"></span>
         </div>
         <div>

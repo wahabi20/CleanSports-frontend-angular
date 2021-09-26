@@ -35,11 +35,11 @@ export class LoginComponent implements OnInit {
 
   emailConfirm()
   {
-    this._router.navigate(['users/emailconfirm']);
+    this._router.navigate(['/emailconfirm']);
   }
 
   addNewUser(){
-    this._router.navigate(['users/register']);
+    this._router.navigate(['/register']);
   }
 
  
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       this.isLoading = false;
        localStorage.setItem('token',resp.token)
        //alert("login Successfully");
-       this._router.navigate(['users/home']);
+       this._router.navigate(['/home']);
 
    }, err => {
        console.log(err);

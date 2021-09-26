@@ -7,11 +7,12 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 //import {AuthService, UserData} from '../../services/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-god-layout',
+  templateUrl: './god-layout.component.html',
+  styleUrls: ['./god-layout.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class GodLayoutComponent implements OnInit {
+
   images: any[] = [
     'https://images-na.ssl-images-amazon.com/images/I/51DR2KzeGBL._AC_.jpg',
     'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg',
@@ -45,9 +46,13 @@ export class HomeComponent implements OnInit {
 
   gotolistUser()
   {
-    this._router.navigate(['users/test']);
+    this._router.navigate(['/players']);
   }
-
+  
+  gototeams()
+  {
+    this._router.navigate(['/teams']);
+  }
 
   postMessage(form: NgForm): void {
     /*
@@ -67,7 +72,6 @@ export class HomeComponent implements OnInit {
   logout(): void {
     //this.authService.Logout();
   }
-
 
 
 }

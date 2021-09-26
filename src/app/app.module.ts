@@ -8,15 +8,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthentificationModule } from './authentification/authentification.module';
+import { GodModule } from './god/god.module';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './services/auth/auth.service';
 import { TokenInterceptorService } from './services/interceptor/token-interceptor.service';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { GodLayoutComponent } from './layouts/god-layout/god-layout.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthLayoutComponent,
+    GodLayoutComponent,
     
    
   ],
@@ -29,6 +34,7 @@ import { TokenInterceptorService } from './services/interceptor/token-intercepto
     AuthentificationModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    GodModule
   ],
   exports:[
   ],

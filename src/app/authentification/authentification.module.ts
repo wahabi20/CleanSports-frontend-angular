@@ -5,12 +5,12 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HomeComponent } from './home/home.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { RouterModule } from '@angular/router';
 import { EmailConfirmComponent } from './emailconfirm/email-confirm/email-confirm.component';
 import { ResetPasswordComponent } from './resetpassword/reset-password/reset-password.component';
-import { TestComponent } from './test/test.component';
+import { AuthentificationRoutingModule } from './authentification-routing.module';
+
 
 
 
@@ -21,18 +21,18 @@ import { TestComponent } from './test/test.component';
   declarations: [
     RegisterComponent,
     LoginComponent,
-    HomeComponent,
     SpinnerComponent,
     EmailConfirmComponent,
     ResetPasswordComponent,
-    TestComponent
+    
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    AuthentificationRoutingModule
   ],
  
   

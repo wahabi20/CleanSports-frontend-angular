@@ -27,7 +27,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-
+  height: 10%;
   &__left {
     display: flex;
     padding:21px;
@@ -192,7 +192,7 @@
     .inside {
       position: fixed;
       padding: 15px;
-      margin-top: 78px;
+      margin-top: 50px;
       background-color: rgb(255, 255, 255);
       //margin-top: 5px;
       width: 320px;
@@ -424,7 +424,7 @@
       flex-direction: column;
        width: 100%;
      // width: 500px;
-       margin-top: 78px;
+      margin-top: 50px;
       height: 100%;
       position: fixed;
       //overflow-y: scroll;

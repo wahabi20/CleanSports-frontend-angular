@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
 
   loginUserData:any;
-  hide: boolean = false;
+  hide: boolean = true;
   isLoading = false;
   message: string = "";
   error: string = "";
