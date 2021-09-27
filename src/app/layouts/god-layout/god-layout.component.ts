@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 //import {PostService} from '../../services/post.service';
 import {Subscription} from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -25,11 +25,16 @@ export class GodLayoutComponent implements OnInit {
   posts: any[] = [];
   //user: UserData;
 
+
   constructor(public _authService: AuthService,
-              private _router:Router) {
+              private _router:Router,
+            ) {
+               
   }
 
   async ngOnInit(): Promise<void> {
+
+    
     /*
     this.subs.push(this.postService.getAllPosts().subscribe(async (posts) => {
       this.posts = posts;

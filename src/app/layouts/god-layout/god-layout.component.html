@@ -19,14 +19,17 @@
 
     <!------Start home__header__middle"------->
     <div class="home__header__middle">
-      <div class="active">
+      <div routerLinkActive="active" class="icon-pos">
         <mat-icon (click)="gotohome()">home</mat-icon>
+        <a routerLink="/home"routerLinkActive="active" style="font-size: 12px; margin-left: 5px;" >Accueil</a>
       </div>
-      <div>
+      <div routerLinkActive="active" class="icon-pos">
         <mat-icon (click)="gotolistUser()">directions_run</mat-icon>
+        <a routerLink="/players"routerLinkActive="active" style="font-size: 12px; margin-left: 5px;" >Joueurs</a>
       </div>
-      <div>
+      <div routerLinkActive="active" class="icon-pos" >
         <mat-icon (click)="gototeams()">group</mat-icon>
+        <a routerLink="/teams"routerLinkActive="active" style="font-size: 12px; margin-left: 5px;" >Equipes</a>
       </div>
       <div>
         <mat-icon>store</mat-icon>

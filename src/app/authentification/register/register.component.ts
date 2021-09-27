@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
   
   gotologinUser()
   { 
-    this._router.navigate(['users/login']);
+    this._router.navigate(['/auth']);
   }
 
 
