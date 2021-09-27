@@ -23,7 +23,7 @@ export class GodLayoutComponent implements OnInit {
   ];
   subs: Subscription[] = [];
   posts: any[] = [];
-  //user: UserData;
+  panelOpenState = false;
 
 
   constructor(public _authService: AuthService,

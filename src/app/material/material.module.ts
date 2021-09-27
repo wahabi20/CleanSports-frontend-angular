@@ -23,7 +23,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const materials = [
   MatButtonModule,
@@ -48,8 +48,8 @@ const materials = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatSnackBarModule,
-  MatFormFieldModule
-  
+  MatFormFieldModule,
+  MatExpansionModule
 ]
 
 @NgModule({

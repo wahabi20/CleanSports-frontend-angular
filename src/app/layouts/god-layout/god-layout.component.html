@@ -100,7 +100,31 @@
       </div>
       <div>
         <mat-icon> local_hospital</mat-icon>
-        <span class="underline">Equipes</span>
+        <!--
+          <span class="underline">Equipes</span>
+        -->
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Equipes
+              </mat-panel-title>
+              <mat-panel-description>
+               
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+              <mat-icon (click)="gototeams()">people</mat-icon>
+              <span>liste des equipes</span>
+            </div>
+            <div>
+              <mat-icon>people</mat-icon>
+              <span>Créer une equipe</span>
+            </div>
+          </mat-expansion-panel>
+         
+        </mat-accordion>
+        
       </div>
 
       <div>
