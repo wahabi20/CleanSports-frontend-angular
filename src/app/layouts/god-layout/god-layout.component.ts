@@ -73,5 +73,9 @@ export class GodLayoutComponent implements OnInit {
     //this.authService.Logout();
   }
 
+  gotohome()
+  {
+    this._router.navigate(['/home'])
+  }
 
 }

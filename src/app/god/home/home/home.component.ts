@@ -45,12 +45,12 @@ export class HomeComponent implements OnInit {
 
   gotolistUser()
   {
-    this._router.navigate(['god/players']);
+    this._router.navigate(['/players']);
   }
   
   gototeams()
   {
-    this._router.navigate(['god/teams']);
+    this._router.navigate(['/teams']);
   }
 
   postMessage(form: NgForm): void {

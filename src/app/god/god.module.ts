@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home/home.component';
+import { GodRoutingModule } from './god-routing.module';
 
 
 
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    GodRoutingModule
   ]
 })
 export class GodModule { }

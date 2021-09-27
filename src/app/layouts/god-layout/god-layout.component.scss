@@ -1,14 +1,5 @@
 @import "src/styles";
 
-/*******Start Custom style ********/
-.underline
-{
-    text-decoration: underline rgb(252, 156, 31);
-}
-
-
-/*******End Custom style ********/
-
 .home-container {
   display: flex;
   flex-direction: column;
@@ -23,21 +14,24 @@
   align-items: center;
   justify-content: space-between;
   background-color: $header-color;
- // padding: 5px;
+  padding: 0px;
   position: fixed;
   top: 0;
   width: 100%;
-  height: 10%;
+  height: 70px;
+
   &__left {
     display: flex;
-    padding:21px;
+    //margin-left: 10px;
     align-items: center;
     gap: 10px;
-    flex: .22;
+    flex: 0.3;
     height: 100%;
-    
     background-color: #1877F2;
-
+    img{
+       margin-right: 15px;
+       margin-left: 5px;
+    }
     div.input {
       position: relative;
       width: fit-content;
@@ -45,12 +39,12 @@
       input {
         outline: none;
         border: 1px solid lightgray;
-        background-color: #ffffff;
-        padding: 10px 16px;
+        background-color: white;
+        padding: 10px 20px;
         border-radius: 5px;
 
         &::placeholder {
-          padding-left: 20px;
+          padding-left: 28px;
           font-size: 15px;
         }
       }
@@ -66,20 +60,10 @@
     }
   }
 
-  .home__header__right{
-    flex: .23;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 22px;
-    grid-gap: 10px;
-    gap: 10px;
-    background-color: #1877F2;
-     
-  }
-
   // Left Ends Here
+   
+
+
 
   &__middle {
     padding: 10px;
@@ -131,20 +115,42 @@
   // Middle Ends Here
 
   &__right {
-    flex: 0.5;
+    flex: 0.2;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 15px;
+    padding: 22px;
     gap: 10px;
-
-
-   
-
+    background-color: #1877F2;
     > * {
-      margin-right: 10px;
+      margin-right: 17px;
       cursor: pointer;
+    }
+   
+    div.contact
+    {
+       background-color: white;
+       width: 150px;
+       border-radius: 20px;
+       justify-content: space-between;
+       margin-left: 10px;
+       .add 
+       {
+          background-color: rgb(225, 228, 228);
+          width: 42px;
+          height: 44px;
+          border-radius: 20px;
+          justify-content: center;
+       }
+       
+       
+    }
+
+    div.expand__more
+    {
+      margin-left: 60px;
+      background-color: red;
     }
 
     span.name {
@@ -170,261 +176,21 @@
 }
 
 
-/*BODY SECTION */
+//------ Start__sidebarRight------->
+.sidebar-right
+{   display: flex;
+    background-color: rgb(255, 255, 255);
+    width: 25.8%;
+    right: 0px;
+    height: 100vh;
+    position: fixed;
 
-.home__body {
-  //margin-top: 100px;
-  background-color: $body-color;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  align-items: flex-start;
-  
-
-  //BODY SIDEBAR
-
-  &__sidebarLeft {
-    position: relative;
-    
-
-    .inside {
-      position: fixed;
-      padding: 15px;
-      margin-top: 50px;
-      background-color: rgb(255, 255, 255);
-      //margin-top: 5px;
-      width: 320px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      .user-avatar {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        span.name {
-          font-size: 16px;
-        }
-      }
-
-      div {
-        display: flex;
-        gap: 20px;
-        font-size: 16px;
-        align-items: center;
-
-        mat-icon {
-          color: #1877F2;
-          font-size: xx-large;
-          width: fit-content;
-          height: fit-content;
-        }
-
-        mat-icon.see-more {
-          color: #828890 !important;
-          padding: 5px;
-          border-radius: 50%;
-          background-color: #E4E6EB;
-        }
-
-        &:last-of-type {
-          border-bottom: 1px solid lightgray;
-          padding-bottom: 20px;
-        }
-
-      }
-    }
-
-
-  }
-
-
-  // BODY CONTENT
-
-  &__contentMiddle {
-    padding: 10px;
-    margin-left:318px;
-    margin-top: 100px;
-    flex: 0.5;
-    width: 46%;
-    display: flex;
-    flex-direction: column;
-   // background-color: green;
-
-    &__top {
-      flex: 0.5;
-      display: flex;
-      gap: 10px;
-      justify-content: space-around;
-      align-items: center;
-
-      .image-card {
-        width: 120px;
-        height: 200px;
-        border-radius: 20px;
-        position: relative;
-        z-index: 0;
-
-
-        &:hover {
-          img.bg {
-            transform: scale(1.06);
-          }
-        }
-
-        span {
-          font-size: 15px;
-          font-family: "Segoe UI Historic", "Segoe UI", Helvetica, Arial, sans-serif;
-          line-height: 1.2;
-          position: absolute;
-          bottom: 10px;
-          left: 5px;
-          color: white;
-          font-weight: 600;
-          padding: 5px;
-        }
-
-        img.bg {
-          max-width: 100%;
-          object-fit: cover;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          border-radius: 20px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-
-        img.avatar {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          color: white;
-          z-index: 99;
-          position: absolute;
-          top: 10px;
-          left: 10px;
-        }
-
-      }
-    }
-
-    &__center {
-      padding: 0 10px;
-      min-height: 20px;
-      width: 100%;
-      align-self: center;
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap:20px;
-
-      mat-card.post-message {
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-
-
-        .post-message-header {
-          width:100%;
-          display: flex;
-          align-items: center;
-
-          form {
-            flex:1;
-          }
-
-          form > input.on-your-mind {
-            background-color: #F0F2F5;
-            display: inline-block;
-            outline: none;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            width: 100%;
-          }
-        }
-
-
-
-
-        .card-body {
-          align-self: center;
-          display: flex;
-          justify-content: center;
-          padding: 10px 40px;
-          width: 90%;
-          margin-top: 10px;
-          align-items: center;
-
-          div {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-            gap: 15px;
-
-            mat-icon {
-              //font-size: xx-large;
-            }
-
-            span {
-              //font-size: 18px;
-            }
-          }
-        }
-      }
-
-      mat-card.posts {
-
-        .posts__header {
-          display:flex;
-
-          img {
-
-          }
-
-          .posts__header__right {
-            display: flex;
-            flex-direction: column-reverse;
-
-            h3 {
-              font-weight: 600;
-              font-size: 15px;
-              text-transform: capitalize;
-              margin-bottom: 0;
-            }
-          }
-
-
-        }
-
-        .posts__body {
-          margin-top: 10px;
-        }
-      }
-    }
-
-
-  }
-
-  // BODY FEED
-  &__feedRight {
-    flex: .42;
-    position: relative;
-    align-self: flex-start;
-   
     .inside {
       display: flex;
       flex-direction: column;
        width: 100%;
      // width: 500px;
-      margin-top: 50px;
+      margin-top: 70px;
       height: 100%;
       position: fixed;
       //overflow-y: scroll;
@@ -434,7 +200,9 @@
       padding: 15px;
       //justify-content: space-between;
       //padding-top: 10px;
-
+      span.underline {
+        text-decoration: underline orange;
+      }
       
       div {
         display: flex;
@@ -462,6 +230,81 @@
         }
 
       }
+
     }
-  }
+    
+}
+//------ End__sidebarRight------->
+
+//------ Start__sidebarLeft------->
+.sidebar-left
+{   display: flex;
+    background-color: rgb(255, 255, 255);
+    width: 27.2%;
+    float: left;
+    margin: 0 auto;
+    position: fixed;
+    height: 100vh;
+
+    .inside {
+      position: fixed;
+      padding: 15px;
+      margin-top: 80px;
+      background-color: rgb(255, 255, 255);
+      //margin-top: 5px;
+      width: 320px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .user-avatar {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        span.name {
+          font-size: 16px;
+        }
+      
+      }
+      span.underline {
+        text-decoration: underline orange;
+      }
+
+      div {
+        display: flex;
+        gap: 20px;
+        font-size: 16px;
+        align-items: center;
+
+        mat-icon {
+          color: #1877F2;
+          font-size: xx-large;
+          width: fit-content;
+          height: fit-content;
+        }
+
+        mat-icon.see-more {
+          color: #828890 !important;
+          padding: 5px;
+          border-radius: 50%;
+          background-color: #E4E6EB;
+        }
+
+        &:last-of-type {
+          border-bottom: 1px solid lightgray;
+          padding-bottom: 20px;
+        }
+
+      }
+    }
+    //position: fixed;
+
+
+}
+//!------ End__sidebarLeft------->
+
+.body{
+  background-color: rgb(213, 219, 219);
 }
