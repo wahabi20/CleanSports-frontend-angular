@@ -22,7 +22,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private _auth: AuthService,
               private _router: Router,
-              private routerActivated: ActivatedRoute,) 
+              private routerActivated: ActivatedRoute) 
               { 
                  routerActivated.queryParams.subscribe(params => {
                     this.form.resetToken = params['token'];

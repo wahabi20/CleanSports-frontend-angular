@@ -8,6 +8,8 @@ import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home/home.component';
 import { GodRoutingModule } from './god-routing.module';
+import { StarComponent } from './star/star.component';
+import { MarketComponent } from './market/market.component';
 
 
 
@@ -15,7 +17,9 @@ import { GodRoutingModule } from './god-routing.module';
   declarations: [
     HomeComponent,
     PlayerComponent,
-    TeamComponent
+    TeamComponent,
+    StarComponent,
+    MarketComponent
   ],
   imports: [
     CommonModule,

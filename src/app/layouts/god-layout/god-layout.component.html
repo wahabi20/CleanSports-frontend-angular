@@ -30,12 +30,15 @@
       <div routerLinkActive="active" class="icon-pos" >
         <mat-icon (click)="gototeams()">group</mat-icon>
         <a routerLink="/teams"routerLinkActive="active" style="font-size: 12px; margin-left: 5px;" >Equipes</a>
+        
       </div>
-      <div>
-        <mat-icon>store</mat-icon>
+      <div routerLinkActive="active" class="icon-pos">
+        <mat-icon  style="font-size: 28px;"  (click)="gotostars()">stars</mat-icon>
+        <a routerLink="/stars"routerLinkActive="active" style="font-size: 12px; margin-left: 5px;" >Internationales</a>
       </div>
-      <div>
-        <mat-icon>flag</mat-icon>
+      <div routerLinkActive="active" class="icon-pos" >
+        <mat-icon (click)="gotomarket()">store</mat-icon>
+         <a routerLink="/marketplace"routerLinkActive="active" style="font-size: 12px; margin-left: 5px;" >Marketplace</a>
       </div>
 
     </div>
@@ -162,16 +165,10 @@
   </div>
    <!------ End__sidebarLeft--------->
 
-   <!------ Start__sidebarRight------->
+   <!------ Start__sidebarRight--->
   <div class="sidebar-right">
     <div class="inside">
-      <div class="user-avatar">
-        <img
-          alt=""
-          mat-card-avatar
-          src="">
-        <span class="name"></span>
-      </div>
+      
       <div>
         <mat-icon> local_hospital</mat-icon>
         <span class="underline">Vos equipe</span>

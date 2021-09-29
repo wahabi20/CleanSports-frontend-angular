@@ -2,71 +2,146 @@
       <div class="home__body__contentMiddle">
   
         <div class="home__body__contentMiddle__top">
-          <!--IMAGE CARDS-->
-          <mat-card *ngFor="let i of images" class="image-card">
-            <img alt="bg"
-                 class="bg" src="{{ i }}">
-            <mat-card-content>
-              <img
-                alt="avatar"
-                class="avatar" src="https://scontent.fdel8-1.fna.fbcdn.net/v/t1.0-1/cp0/p50x50/15078703_10211571832470683_2854551810050518303_n.jpg?_nc_cat=105&_nc_sid=7206a8&_nc_ohc=YSQBDLYrXHgAX_7KBWW&_nc_ht=scontent.fdel8-1.fna&oh=298837f1c1ebe1f884ce2525d31f39b1&oe=5F6F741A">
-              <span class="card-name">Indranil Mukherjee</span>
-            </mat-card-content>
-          </mat-card>
+          <!--Table to list of players-->
+             
+
+              <div>
   
+
+                <div class="card" style="width: 37rem;">
+            
+                    <div class="card-body">
+                        <div class="card-title" class="panel-style">
+                           <p class="title-style">Meilleure jouers</p></div>
+                       
+                      
+                            <div class="input">
+                              <input  placeholder="Recherche..."  type="text" class="form-control" [(ngModel)]="motCle">
+                              <button mat-button (click)="chercher()">
+                                <mat-icon  >search_outline</mat-icon>
+                                
+                              </button>
+                           </div>
+                         
+    
+                       
+                        <table class="table mt-4">
+                            <thead>
+                              <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Region</th>
+                                <th scope="col">Points</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                                  <tr class="clicable"   *ngFor="let user of pageContacts; let i=index">
+                                      <th scope="row">
+                                        <img   mat-card-avatar src="{{user.logo}}"></th>
+                                      <td scope="row">{{user.first_Name}}</td>
+                                      <td scope="row">{{user.address}}</td>
+                                      <td  style="color: #1877F2;"  scope="row">{{user.pts}}</td>
+                                    
+                                  </tr>
+                              
+                              
+                              
+                            </tbody>
+                          </table>
+            
+                           
+                               <nav aria-label="Page navigation example">
+                                  <ul class="pagination justify-content-center">
+                                      <li>
+                                        <a class="page-link clicable" (click)="goToPreviousPage()" ><mat-icon class="chevron">chevron_left</mat-icon></a>
+                                      </li>
+                                      <li  [ngClass]="{'active':i==currentPage}"   class="page-item"    *ngFor="let p of pages; let i=index">
+                                        <a     class="page-link clicable style" (click)="gotoPage(i)">
+                                             <span class="index">{{i+1}}</span> </a>
+                                           
+                                      </li>
+                                    
+                                      <li>
+                                        <a class="page-link clicable"   (click)="goToNextPage()"><mat-icon class="chevron">chevron_right</mat-icon></a>
+                                      </li>
+                                     </ul>
+                                    
+                                     
+                                    
+                                        
+                            
+                                
+                                 </nav>
+                               
+                                
+                               
+                           
+                         
+            
+            
+            
+                </div>
+            </div>
+            
+            </div>
+            
         </div>
+           <!---End Table  to liste of players-->
+        
   
         <div class="home__body__contentMiddle__center">
-          <mat-card class="post-message">
-            <mat-card-header class="post-message-header"
-                             style="padding-bottom: 20px; border-bottom: 1px solid lightgray;">
-              <img
-                alt=""
-                mat-card-avatar
-                [src]="">
-              <form #form="ngForm" (ngSubmit)="postMessage(form)">
-                <input class="on-your-mind" name="message" ngModel placeholder="What's on your mind?" type="text">
-                <button style="display: none;" type="submit"></button>
-              </form>
-  
-            </mat-card-header>
-            <mat-card-content class="card-body">
-              <div>
-                <mat-icon color="accent">videocam</mat-icon>
-                <span>Live Video</span>
+
+          
+          <mat-card   style="width: 37rem;">
+            <div class="input">
+              <input  placeholder="Recherche..."  type="text" class="form-control" [(ngModel)]="motCle">
+              <button mat-button (click)="chercher()">
+                <mat-icon  >search_outline</mat-icon>
+                
+              </button>
+           </div>
+           <div class="container">
+              <div  class="col-lg-12">
+                 <div class="row">
+                    <div   class="col-md-3 col-xs-12 card-players" *ngFor="let user of pageContacts; let i=index"  > 
+                        <img
+                        alt=""
+                         mat-card-avatar
+                         style="width: 80px; height: 80px; margin-left: 15px; margin-top: 12px;"
+                         src="{{user.logo}}">
+                      <div style="display: flex;flex-direction: column;">
+                         <span class="name-player">{{user.first_Name}}</span>
+                         <span class="nb-pts">{{user.pts}}pts</span>
+                         <div class="card-contacts" >
+                          <mat-icon class="contact-icon">phone_in_talk</mat-icon>
+                          <mat-icon class="contact-icon">sms</mat-icon>
+                          <mat-icon class="contact-icon">send</mat-icon>
+                         </div>
+                       </div>
+                    
+                    </div>
+                   
+              
+                  </div>
+
+                 </div>
+
               </div>
-  
-              <div>
-                <mat-icon color="primary">photo_album</mat-icon>
-                <span>Photo/Video</span>
-              </div>
-  
-              <div>
-                <mat-icon color="warn">mood</mat-icon>
-                <span>Feeling/Activity</span>
-              </div>
-            </mat-card-content>
+
+         
+
+
           </mat-card>
   
           <!--Loop Through All Posts From Database and Display-->
-          <mat-card *ngFor="let p of posts" class="posts">
-            <mat-card-header class="posts__header">
-              <img alt="{{ p?.title }}" mat-card-avatar [src]="p?.avatar">
-              <div class="posts__header__right">
-                <span>{{ p?.time?.seconds * 1000 | date:'shortTime' }}</span>
-                <h3>{{ p?.title }}</h3>
-              </div>
-            </mat-card-header>
-            <mat-card-content class="posts__body">
-              <p>{{ p?.message }}</p>
-            </mat-card-content>
-          </mat-card>
+         
   
   
         </div>
-        <div style="height: 600px; width: 600px;">
-          
-      </div>
+
+        <div style="height: 600px; width: 600px;"></div>
   
       </div>
   

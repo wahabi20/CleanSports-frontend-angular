@@ -54,6 +54,14 @@ export class GodLayoutComponent implements OnInit {
     this._router.navigate(['/players']);
   }
   
+  gotomarket()
+  {
+    this._router.navigate(['/marketplace']);
+  }
+  gotostars()
+  {
+    this._router.navigate(['/stars']);
+  }
   gototeams()
   {
     this._router.navigate(['/teams']);
