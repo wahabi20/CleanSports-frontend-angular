@@ -1,3 +1,6 @@
+<div *ngIf="dataLoaded " class="spinner">
+  <app-spinner></app-spinner>
+</div>
 
       <div class="home__body__contentMiddle">
   
@@ -14,17 +17,16 @@
                         <div class="card-title" class="panel-style">
                            <p class="title-style">Meilleure jouers</p></div>
                        
-                      
+                         
                             <div class="input">
-                              <input  placeholder="Recherche..."  type="text" class="form-control" [(ngModel)]="motCle">
+                              <input  placeholder="Recherche un jouer"  type="text" class="form-control" [(ngModel)]="motCle">
                               <button mat-button (click)="chercher()">
                                 <mat-icon  >search_outline</mat-icon>
                                 
                               </button>
                            </div>
                          
-    
-                       
+                           
                         <table class="table mt-4">
                             <thead>
                               <tr>
@@ -68,20 +70,10 @@
                                       </li>
                                      </ul>
                                     
-                                     
-                                    
-                                        
-                            
                                 
                                  </nav>
                                
-                                
-                               
-                           
-                         
-            
-            
-            
+                              
                 </div>
             </div>
             
@@ -96,16 +88,16 @@
           
           <mat-card   style="width: 37rem;">
             <div class="input">
-              <input  placeholder="Recherche..."  type="text" class="form-control" [(ngModel)]="motCle">
-              <button mat-button (click)="chercher()">
+              <input  placeholder="Recherche un jouer"  type="text" class="form-control" [(ngModel)]="motClerandomPages">
+              <button mat-button (click)="RandomSearsh()">
                 <mat-icon  >search_outline</mat-icon>
                 
               </button>
            </div>
            <div class="container">
-              <div  class="col-lg-12">
+              <div  class="col-lg-12 mb-4">
                  <div class="row">
-                    <div   class="col-md-3 col-xs-12 card-players" *ngFor="let user of pageContacts; let i=index"  > 
+                    <div   class="col-md-3 col-xs-12 card-players" *ngFor="let user of randompageContacts; let i=index"  > 
                         <img
                         alt=""
                          mat-card-avatar
@@ -130,8 +122,24 @@
 
               </div>
 
-         
-
+               <!------------------Start  navigation page -------------------->
+               <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li>
+                      <a class="page-linkrandom clicable" (click)="goToPreviousRandomPage()" >Précédente</a>
+                    </li>
+                    <li  [ngClass]="{'active':i==currentRandomPage}"      class="page-item" *ngFor="let p of randomPages; let i=index">
+                      <a    class="page-linkrandom clicable" (click)="gotoRandomPage(i)">{{i+1}}</a>
+                      
+                    </li>
+                  
+                    <li>
+                      <a class="page-linkrandom clicable"   (click)="goToNextRandomPage()">Suivante</a>
+                    </li>
+                   </ul>
+               
+               </nav>
+              
 
           </mat-card>
   

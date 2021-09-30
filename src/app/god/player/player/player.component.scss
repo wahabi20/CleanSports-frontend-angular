@@ -572,3 +572,27 @@ table{
   margin-left: 30px; 
   color:#1877F2 ;
 }
+
+
+//////start page random players
+
+
+.page-linkrandom {
+   
+    padding: 0.50em 1em;
+    text-decoration: none; /* no underline */
+    background-color:white; /* pale bluish white */
+    color: #2e7aec; /* dark blue */
+    border: 0.1px groove rgb(243, 249, 255);
+    margin-left: 0.1px;
+      
+    }
+  
+.page-linkrandom:hover {
+  color: #2e7aec;
+  background-color: rgb(225, 227, 228);
+
+}
+  
+  
+

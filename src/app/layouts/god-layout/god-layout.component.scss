@@ -190,9 +190,9 @@
     .inside {
       display: flex;
       flex-direction: column;
-       width: 100%;
+       width: 40%;
      // width: 500px;
-      margin-top: 70px;
+      margin-top: 90px;
       height: 100%;
       position: fixed;
       //overflow-y: scroll;
@@ -200,6 +200,7 @@
        background-color: rgb(255, 255, 255);
       gap: 20px;
       padding: 15px;
+    
       //justify-content: space-between;
       //padding-top: 10px;
       span.underline {
@@ -207,11 +208,12 @@
       }
       
       div {
+        //background-color: aqua;
         display: flex;
         gap: 20px;
         font-size: 16px;
         align-items: center;
-
+        margin-left: 20px;
         mat-icon {
           color: #1877F2;
           font-size: xx-large;

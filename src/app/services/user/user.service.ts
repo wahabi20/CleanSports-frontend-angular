@@ -18,4 +18,11 @@ getUsers(name:string, page:number, limit: number): Observable<any>{
   let host= environment.host;
   return this.http.get(host+'/cleansports/api/users/searchuser?page=' + pages +'&limit='+ limit +'&name='+ name);
 }
+
+geRandomUsers(name:string, page:number, limit: number): Observable<any>{
+  const pages = page + 1;
+  let host= environment.host;
+  return this.http.get(host+'/cleansports/api/users/searchuser?page=' + pages +'&limit='+ limit +'&name='+ name);
+}
+
 }

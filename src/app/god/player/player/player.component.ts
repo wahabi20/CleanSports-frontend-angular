@@ -21,17 +21,19 @@ export class PlayerComponent implements OnInit {
   dataLoaded: boolean = false;
   pageContacts: any;
   motCle:string="";
+  motClerandomPages:string="";
   currentPage:number=0;
+  currentRandomPage:number=0;
   currentPerPage:number=5;
-  limit:number=8;
+  currentrandomPerPage:number=8;
+  limit:number=5;
+  limitrandom:number=8;
   pages = new Array();
+  randomPages = new Array();
   user:boolean=true;
-  
+  randompageContacts: any;
+  datarandomLoaded: boolean = false;
 
-
-
-  subs: Subscription[] = [];
-  posts: any[] = [];
 
 
   constructor(public _us: UserService,
@@ -39,8 +41,8 @@ export class PlayerComponent implements OnInit {
   }
 
    ngOnInit():void {
-    this.dataLoaded = false ;
-
+     /** get list of players sortig by pts and limit 5 */
+    this.dataLoaded = true ;
     this._us.getUsers(this.motCle, this.currentPage , this.limit).subscribe((response : any[]) => {
     response.map(res => {
       this.pageContacts = res.result;
@@ -49,7 +51,7 @@ export class PlayerComponent implements OnInit {
       console.log(this.pageContacts);
       
    })
-   this.dataLoaded = true;
+   this.dataLoaded = false;
      
  }, err => {
     console.log(err);
@@ -58,137 +60,131 @@ export class PlayerComponent implements OnInit {
           this._router.navigate(['/auth'])
        }
     }
- })
-   
+     })
+
+      /** get list of random players and limit 8 */
+      this.datarandomLoaded = false ;
+      this._us.geRandomUsers(this.motClerandomPages, this.currentRandomPage , this.limitrandom).subscribe((response : any[]) => {
+      response.map(res => {
+        this.randompageContacts = res.result;
+  
+        this.randomPages= new Array(res.total_pages);
+        console.log(this.randompageContacts);
+        
+     })
+     this.datarandomLoaded = true;
+       
+   }, err => {
+      console.log(err);
+      if(err instanceof HttpErrorResponse){
+         if(err.status === 401) {
+            this._router.navigate(['/auth'])
+         }
+      }
+       })
   }
 
 
 
 
-  
+/********************** Start work flow search best players **************************/
 chercher(){
   this.doSearch();
 }
+/** do search function to get players sortig by pts and limit 5 */
+doSearch(){
 
-  doSearch(){
-
-    this.dataLoaded = false ;
+    this.dataLoaded = true ;
     this._us.getUsers(this.motCle,this.currentPage, this.limit).subscribe((response : any[]) => {
        response.map(res => {
+        this.dataLoaded = false;
          this.pageContacts = res.result;
          console.log("totale pages>>>",Math.ceil(res.total_pages) );
          this.pages= new Array(res.total_pages);
         
          
       })
-      this.dataLoaded = true;
+     
         
     }, err => {
+      this.dataLoaded = false;
        console.log(err);
     })
   
-  }
+}
 
-
-
-  gotoPerPage(perPage:number){
-    console.log("perpage>>>", perPage)
-    this.currentPerPage=perPage;
-    this.limit=perPage;
-    this.doSearch();
-  }
-
-
-  gotoHome()
+gotoHome()
   {
     this._router.navigate(['god/home']);
   }
 
-  gototeams()
+gototeams()
   {
     this._router.navigate(['god/teams']);
   }
 
-
-  goToNextPage(){
+goToNextPage(){
     this.currentPage = ++this.currentPage;
     this.doSearch();
    }
 
-   gotoPage(i:number){
+gotoPage(i:number){
     this.currentPage=i;
     this.doSearch();
   }
 
-  goToPreviousPage(){
+goToPreviousPage(){
     this.currentPage = --this.currentPage;
     this.doSearch();
    }
-  
+/********************** End work flow search best players **************************/
 
-   onDeleteContact(user:any){
-     /*
-    let confirm = window.confirm("Est vous sure ?")
-    if(confirm){
-       console.log("userdddd>>>",user)
-     this.cs.deleteContact(user._id).subscribe(resp=>{
-     console.log(resp)
-     this.pageContacts.splice(this.pageContacts.indexOf(user),1);      
-   }, err => {
-      console.log(err)
-     if(err instanceof HttpErrorResponse){
-       if(err.status === 401) {
-          this.router.navigate(['auth/login'])
-       }
-    }
-   })
-    }
-    */
-  }
+
+
+
+
+
+
+ /********************** Start work flow search random players **************************/  
+ RandomSearsh(){
+  this.doRandomSearch();
+}
+
+goToNextRandomPage(){
+  this.currentRandomPage = ++this.currentRandomPage;
+   this.doRandomSearch()
+ }
  
-  onEditContact(id:string){
-    //this.router.navigate(['users/editContact',id]);
-   
-    }
-   
+gotoRandomPage(i:number){
+  this.currentRandomPage=i;
+  this.doRandomSearch();
+}
 
-    onActive(data:any){
-  /*
-      this.cs.onActiveContact(data).subscribe(resp=> {
-        console.log(resp)
-        this.doSearch();
-      }
-      , err =>{
-         console.log(err)
-         if(err instanceof HttpErrorResponse){
-           if(err.status === 401) {
-              this.router.navigate(['auth/login'])
-           }
-        }
-      })
-      */
-    }
+ doRandomSearch(){
 
+  this.datarandomLoaded = false ;
+  this._us.geRandomUsers(this.motClerandomPages,this.currentRandomPage, this.limitrandom).subscribe((response : any[]) => {
+     response.map(res => {
+       this.randompageContacts = res.result;
+       console.log("totale pages>>>",Math.ceil(res.total_pages) );
+       this.randomPages= new Array(res.total_pages);
+      
+       
+    })
+    this.datarandomLoaded = true;
+      
+  }, err => {
+     console.log(err);
+  })
 
+}
 
+ goToPreviousRandomPage()
+ {
+  this.currentRandomPage = --this.currentRandomPage;
+  this.doRandomSearch();
+ }
 
-  postMessage(form: NgForm): void {
-    /*
-    const {message} = form.value;
-    this.postService.postMessage(message,
-      `${this.user.firstName} ${this.user.lastName}`,
-      {
-        avatar: this.user.avatar,
-        lastName: this.user.lastName,
-        firstname: this.user.firstName
-      },
-    );
-    form.resetForm();
-    */
-  }
-
-  logout(): void {
-    //this.authService.Logout();
-  }
+  /********************** Start work flow search random players **************************/
 
 }

@@ -34,6 +34,9 @@ import { AuthentificationRoutingModule } from './authentification-routing.module
     RouterModule,
     AuthentificationRoutingModule
   ],
+  exports: [
+    SpinnerComponent
+  ]
  
   
 })

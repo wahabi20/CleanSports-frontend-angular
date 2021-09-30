@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home/home.component';
 import { GodRoutingModule } from './god-routing.module';
 import { StarComponent } from './star/star.component';
 import { MarketComponent } from './market/market.component';
+import { SpinnerComponent } from '../authentification/components/spinner/spinner.component';
+import { AuthentificationModule } from '../authentification/authentification.module';
 
 
 
@@ -20,6 +22,7 @@ import { MarketComponent } from './market/market.component';
     TeamComponent,
     StarComponent,
     MarketComponent
+    
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,8 @@ import { MarketComponent } from './market/market.component';
     ReactiveFormsModule,
     MaterialModule,
     RouterModule,
-    GodRoutingModule
+    GodRoutingModule,
+    AuthentificationModule
   ]
 })
 export class GodModule { }
