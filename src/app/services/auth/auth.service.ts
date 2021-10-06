@@ -39,8 +39,22 @@ getToken(){
   return localStorage.getItem('token')
 }
 
+isAdminUser()
+{
+    let  isAdmin = localStorage.getItem('isAdmin');
+    //console.log('isAdmin from the server>>>', isAdmin)
+      if( isAdmin === 'true')
+        return true;
+   
+     return false;
+    
+}
+
+
+
 logoutUser(){
   localStorage.removeItem('token');
+  localStorage.removeItem('isAdmin');
   this._router.navigate(['/auth']);
 }
 

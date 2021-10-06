@@ -14,6 +14,7 @@ import { AuthService } from './services/auth/auth.service';
 import { TokenInterceptorService } from './services/interceptor/token-interceptor.service';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { GodLayoutComponent } from './layouts/god-layout/god-layout.component';
+import { DashLayoutComponent } from './layouts/dash-layout/dash-layout.component';
 
 
 
@@ -22,6 +23,7 @@ import { GodLayoutComponent } from './layouts/god-layout/god-layout.component';
     AppComponent,
     AuthLayoutComponent,
     GodLayoutComponent,
+    DashLayoutComponent,
     
    
   ],

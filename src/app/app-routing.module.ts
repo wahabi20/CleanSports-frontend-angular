@@ -10,6 +10,7 @@ import { PlayerComponent } from './god/player/player/player.component';
 import { StarComponent } from './god/star/star.component';
 import { TeamComponent } from './god/team/team.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { DashLayoutComponent } from './layouts/dash-layout/dash-layout.component';
 import { GodLayoutComponent } from './layouts/god-layout/god-layout.component';
 
 const routes: Routes = [
@@ -36,7 +37,7 @@ const routes: Routes = [
   ]
 },
 
-// App Routes
+// God Routes
 {
   path:'',
   component:GodLayoutComponent,
@@ -59,6 +60,25 @@ const routes: Routes = [
   ]
 },
 
+
+// Dashboard Routes
+{
+  path:'',
+  component:DashLayoutComponent,
+  children: [
+    {
+      path: '',
+      redirectTo: '/Dashboard/home',
+      pathMatch: 'full'
+
+    },
+  
+    {
+      path: 'Dashboard/home',
+      loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    }
+  ]
+},
 
 
 

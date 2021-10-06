@@ -57,9 +57,10 @@ export class LoginComponent implements OnInit {
     }
   
     this._auth.loginUser(dataUser).subscribe(resp => {
-      console.log('resp from loginUserData>>>', resp.token);
+      console.log('resp from loginUserData>>>', resp);
       this.isLoading = false;
        localStorage.setItem('token',resp.token)
+       localStorage.setItem('isAdmin',resp.user.isAdmin)
        //alert("login Successfully");
        this._router.navigate(['/home']);
 
