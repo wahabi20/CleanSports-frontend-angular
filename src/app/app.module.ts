@@ -15,6 +15,7 @@ import { TokenInterceptorService } from './services/interceptor/token-intercepto
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { GodLayoutComponent } from './layouts/god-layout/god-layout.component';
 import { DashLayoutComponent } from './layouts/dash-layout/dash-layout.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 
@@ -36,7 +37,8 @@ import { DashLayoutComponent } from './layouts/dash-layout/dash-layout.component
     AuthentificationModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    GodModule
+    GodModule,
+    DashboardModule
   ],
   exports:[
   ],
