@@ -1,15 +1,34 @@
 <mat-list role="list">
 
+   
+     
+    <mat-list-item role="listitem" >
+
+        <div routerLinkActive="active">
+            <mat-icon (click)="gotohome()">home</mat-icon>
+            <a routerLink="/Dashboard" routerLinkActive="active"  >Accueil</a>
+        </div>
+        
+    </mat-list-item>
+     
+
+ 
     <mat-list-item role="listitem">
-       <a href="/Dashboard/home"> Gestion des utilisateurs </a>
+        <div routerLinkActive="active" >
+            <mat-icon (click)="gotousers()">home</mat-icon>
+            <a routerLink="/Dashboard/users" routerLinkActive="active"  >Gestion des utilisateurs </a>
+        </div>
     </mat-list-item>
 
     <mat-list-item role="listitem">
-        <a href="users/list">List Users</a>
+        <div routerLinkActive="active" >
+            <mat-icon (click)="gotohomepage()">home</mat-icon>
+            <a routerLink="/Dashboard/users" routerLinkActive="active"  >back to home </a>
+        </div>
     </mat-list-item>
-    <mat-list-item role="listitem">
-        <a href="users/read">read</a>
-    </mat-list-item>
+   
+    
+
    
   </mat-list>
   

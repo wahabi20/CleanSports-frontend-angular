@@ -69,7 +69,7 @@ export class GodLayoutComponent implements OnInit {
 
   gotoDashboard()
   {
-    this._router.navigate(['/Dashboard/home']);
+    this._router.navigate(['/Dashboard']);
   }
 
   postMessage(form: NgForm): void {

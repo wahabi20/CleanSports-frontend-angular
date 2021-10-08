@@ -145,7 +145,7 @@ goToPreviousPage(){
 
 
 
- /********************** Start work flow search random players **************************/  
+ /********************** Start work flow search random players  and limit 8**************************/  
  RandomSearsh(){
   this.doRandomSearch();
 }

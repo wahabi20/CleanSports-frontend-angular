@@ -10,16 +10,14 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   
-  private _resetPasswordUrl = "http://localhost:3000/cleansports/api/users/reset/"
+  
 
 
-  constructor(private http:HttpClient, private _router:Router) { }
+constructor(private http:HttpClient, private _router:Router) { }
 
   
 
 
-
-  
 loginUser(user:Login){
   console.log("user  from server >>>", user)
   let host= environment.host;
@@ -27,13 +25,11 @@ loginUser(user:Login){
   return this.http.post<any>(host+"/cleansports/api/auth/login",user);
 }
 
- 
 registerUser(user:any){
   console.log("register  from server >>>", user)
   let host= environment.host;
   return this.http.post<any>(host+"/cleansports/api/users/register",user);
 }
-
 
 getToken(){
   return localStorage.getItem('token')
@@ -50,21 +46,16 @@ isAdminUser()
     
 }
 
-
-
 logoutUser(){
   localStorage.removeItem('token');
   localStorage.removeItem('isAdmin');
   this._router.navigate(['/auth']);
 }
 
-
 loggedIn(){
   //if the token exist in the localstorge return true else return false 
   return !!localStorage.getItem('token');
 }
-
-
 
 forgetPassowrd(email:string){
   let host= environment.host;

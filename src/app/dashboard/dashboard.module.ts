@@ -1,23 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MaterialModule } from '../material/material.module';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent,
+  
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    ManageUsersComponent,
+    AccueilComponent,
+    
+   
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    
   ],
   exports: [
     HeaderComponent,

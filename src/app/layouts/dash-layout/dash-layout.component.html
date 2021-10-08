@@ -1,17 +1,27 @@
 
+<mat-toolbar color="primary">
+<mat-toolbar-row>
+   <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+   </button>
+ 
+    
+  
 
-    <app-header></app-header>
-<mat-drawer-container class="example-container">
+</mat-toolbar-row>
+</mat-toolbar>
 
-  <mat-drawer  style="width: 16%;"  mode="side" opened>
+<mat-sidenav-container class="example-container">
+
+  <mat-sidenav    #sidenav  style="width: 16%;"  mode="side" opened>
      <app-sidebar></app-sidebar>
-  </mat-drawer>
+  </mat-sidenav>
 
-  <mat-drawer-content>
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
-  </mat-drawer-content>
+  </mat-sidenav-content>
 
-</mat-drawer-container>
+</mat-sidenav-container>
 
 <app-footer></app-footer>
 
