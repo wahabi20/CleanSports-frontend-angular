@@ -24,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 const materials = [
@@ -50,7 +51,12 @@ const materials = [
   MatNativeDateModule,
   MatSnackBarModule,
   MatFormFieldModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  FlexLayoutModule,
+  MatMenuModule,
+  MatButtonModule
 ]
 
 @NgModule({

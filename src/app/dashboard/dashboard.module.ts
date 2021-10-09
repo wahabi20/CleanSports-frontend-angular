@@ -9,6 +9,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -29,6 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MaterialModule,
     MatToolbarModule,
     MatSidenavModule,
+    RouterModule,
     
   ],
   exports: [

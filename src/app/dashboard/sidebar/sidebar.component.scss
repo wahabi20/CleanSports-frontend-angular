@@ -2,8 +2,10 @@
 a {
     color: black;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 18px;
     display: block;
+    margin-left: 10px;
+    margin-top: 10px;
   }
   
   a.active {
@@ -13,12 +15,12 @@ a {
 
   div {
     height: 100%;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 18px 15px;
-    justify-content: center;
-
+    justify-content: flex-start;
+   
     mat-icon {
       color: #65676B;
       font-size: 30px;
@@ -36,7 +38,7 @@ a {
 
     &::before {
       content: '';
-      border-bottom: 4px solid #1877F2;
+      background-color: 4px solid #1877F2;
       position: absolute;
       bottom: -15px;
       height: 2px;

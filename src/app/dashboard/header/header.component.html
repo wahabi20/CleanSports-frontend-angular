@@ -1,6 +1,33 @@
-<mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-     <mat-icon>menu</mat-icon>
-   </button>
 
- </mat-toolbar>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+     <button mat-icon-button>
+        <mat-icon (click)="inputSideNav.toggle();">menu</mat-icon>
+     </button>
+     
+     <span>APP LOGO</span>
+  
+     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul style="list-style-type:none;" class="mt-3" fxLayout="row" fxLayoutGap="18px">
+           <li>
+               <button mat-icon-button>
+                   <mat-icon>settings</mat-icon>
+               </button>
+           </li>
+          
+           <li>
+                  <button  mat-button [matMenuTriggerFor]="menu">
+                     <mat-icon>person_outline</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    
+                      <button mat-menu-item    class="clicable"  (click)="gotohomepage()">Go to app</button>
+                          
+                      <button mat-menu-item    class="clicable" (click)="_authService.logoutUser()">Logout</button>
+                    
+                  </mat-menu>
+           </li>
+        </ul> 
+     </div>
+  </mat-toolbar-row>
+  </mat-toolbar>

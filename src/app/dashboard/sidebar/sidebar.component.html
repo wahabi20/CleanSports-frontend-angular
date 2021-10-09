@@ -2,21 +2,21 @@
 
    
      
-    <mat-list-item role="listitem" >
+    <mat-list-item role="listitem" class="mt-4 mb-2" >
 
         <div routerLinkActive="active">
             <mat-icon (click)="gotohome()">home</mat-icon>
-            <a routerLink="/Dashboard" routerLinkActive="active"  >Accueil</a>
+            <a routerLink="/Dashboard" routerLinkActive="active">Accueil</a>
         </div>
         
     </mat-list-item>
      
 
  
-    <mat-list-item role="listitem">
-        <div routerLinkActive="active" >
-            <mat-icon (click)="gotousers()">home</mat-icon>
-            <a routerLink="/Dashboard/users" routerLinkActive="active"  >Gestion des utilisateurs </a>
+    <mat-list-item role="listitem" class="mb-2">
+        <div routerLinkActive="active">
+            <mat-icon (click)="gotousers()">account_circle</mat-icon>
+            <a routerLink="/users" routerLinkActive="active">Profil </a>
         </div>
     </mat-list-item>
 
