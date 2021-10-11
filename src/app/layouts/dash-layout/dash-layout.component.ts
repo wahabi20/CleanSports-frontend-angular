@@ -22,6 +22,8 @@ export class DashLayoutComponent implements OnInit {
    this._router.navigate(['/home'])
  }
 
+
+ 
   onActionEvent($event: UserActionsTypes)
   {
      switch ($event)

@@ -64,7 +64,7 @@ export class PlayerComponent implements OnInit {
 
       /** get list of random players and limit 8 */
       this.datarandomLoaded = false ;
-      this._us.geRandomUsers(this.motClerandomPages, this.currentRandomPage , this.limitrandom).subscribe((response : any[]) => {
+      this._us.getRandomUsers(this.motClerandomPages, this.currentRandomPage , this.limitrandom).subscribe((response : any[]) => {
       response.map(res => {
         this.randompageContacts = res.result;
   
@@ -163,7 +163,7 @@ gotoRandomPage(i:number){
  doRandomSearch(){
 
   this.datarandomLoaded = false ;
-  this._us.geRandomUsers(this.motClerandomPages,this.currentRandomPage, this.limitrandom).subscribe((response : any[]) => {
+  this._us.getRandomUsers(this.motClerandomPages,this.currentRandomPage, this.limitrandom).subscribe((response : any[]) => {
      response.map(res => {
        this.randompageContacts = res.result;
        console.log("totale pages>>>",Math.ceil(res.total_pages) );

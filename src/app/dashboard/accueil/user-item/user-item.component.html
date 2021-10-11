@@ -1,0 +1,25 @@
+<tr *ngIf="user">
+    <td>{{user._id}}</td>
+    <td>{{user.first_Name}}</td>
+    <td>{{user.last_Name}}</td>
+    <td>{{user.address}}</td>
+    <td>{{user.email}}</td>
+    <td> <span [ngClass]="user.isAdmin?'fa fa-check text-success':''"></span></td>
+    <td>
+        <button  (click)="onActive(user)" [ngClass]="user.isActive?'btn-success':'btn-danger'"  class="btn btn-sm">
+            <span *ngIf="user.isActive">desactiver</span>
+            <span *ngIf="!user.isActive">activer</span>
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-danger" (click)="onDelete(user)">
+            <span class="fa fa-trash-o"></span>
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-danger" (click)="onUpdate(user)">
+            <span class="fa fa-edit"></span>
+        </button>
+    </td>
+
+</tr>

@@ -19,10 +19,32 @@ getUsers(name:string, page:number, limit: number): Observable<any>{
   return this.http.get(host+'/cleansports/api/users/searchuser?page=' + pages +'&limit='+ limit +'&name='+ name);
 }
 
-geRandomUsers(name:string, page:number, limit: number): Observable<any>{
+getRandomUsers(name:string, page:number, limit: number): Observable<any>{
   const pages = page + 1;
   let host= environment.host;
   return this.http.get(host+'/cleansports/api/users/searchuser?page=' + pages +'&limit='+ limit +'&name='+ name);
 }
+
+
+
+
+getAllUsers():Observable<any>{
+ 
+ let host= environment.host;
+ return this.http.get<any>(host+'/cleansports/api/users');
+}
+
+
+
+
+active(user:any): Observable<any>{
+  console.log("user>>>", user)
+ let host=environment.host;
+  const newData = {"isActive":!user.isActive};
+
+ return this.http.put<any>(host+"/cleansports/api/users/status/"+user._id,newData);
+}
+
+
 
 }

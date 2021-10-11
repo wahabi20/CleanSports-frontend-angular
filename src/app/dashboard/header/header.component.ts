@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
 
   gotohomepage()
   {
-    console.log("test headre comp")
+   
     this.userEventEmitter.emit(UserActionsTypes.GO_TO_APP);
   }
 

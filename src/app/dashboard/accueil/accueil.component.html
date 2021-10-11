@@ -1,1 +1,8 @@
-<p>accueil works!</p>
+
+
+
+<app-users-list 
+[usersInput$]="users$"
+(userEventEmitter)="onActionEvent($event)"
+>
+</app-users-list>

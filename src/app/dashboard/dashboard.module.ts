@@ -10,6 +10,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
+import { UsersListComponent } from './accueil/users-list/users-list.component';
+import { UserItemComponent } from './accueil/user-item/user-item.component';
 
 
 
@@ -22,6 +24,8 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     ManageUsersComponent,
     AccueilComponent,
+    UsersListComponent,
+    UserItemComponent,
     
    
   ],
