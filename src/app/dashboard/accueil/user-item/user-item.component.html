@@ -1,25 +1,42 @@
-<tr *ngIf="user">
-    <td>{{user._id}}</td>
+
+
+    <tr *ngIf="user">
+    <td style="padding-left: 12px;">{{user._id}}</td>
     <td>{{user.first_Name}}</td>
     <td>{{user.last_Name}}</td>
     <td>{{user.address}}</td>
     <td>{{user.email}}</td>
-    <td> <span [ngClass]="user.isAdmin?'fa fa-check text-success':''"></span></td>
-    <td>
+   
+        <td>
         <button  (click)="onActive(user)" [ngClass]="user.isActive?'btn-success':'btn-danger'"  class="btn btn-sm">
             <span *ngIf="user.isActive">desactiver</span>
             <span *ngIf="!user.isActive">activer</span>
         </button>
     </td>
+    <div class="icon-container">
     <td>
-        <button class="btn btn-danger" (click)="onDelete(user)">
+        <button    class="btn btn-primary icon-style" (click)="onDelete(user)">
             <span class="fa fa-trash-o"></span>
         </button>
     </td>
     <td>
-        <button class="btn btn-danger" (click)="onUpdate(user)">
+        <button  class="btn btn-primary icon-style"  (click)="onAdd(user)">
+            <span class="fa fa-plus"></span>
+            
+        </button>
+    </td>
+    <td>
+        <button  class="btn btn-primary" (click)="onUpdate(user)">
             <span class="fa fa-edit"></span>
         </button>
     </td>
 
+   </div>
+   
 </tr>
+
+
+
+<!--
+     <td> <span [ngClass]="user.isAdmin?'fa fa-check text-success':''"></span></td>
+-->

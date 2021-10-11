@@ -16,15 +16,27 @@ export class AccueilComponent implements OnInit {
   readonly DataStateEnum=DataStateEnum;
 
 
+  motCle:string="";
+  currentPage:number=0;
+  currentPerPage:number=5;
+  limit:number=5;
+  pages = new Array();
+  pageSizeOptions=[5, 10, 25];
+
+
+
+
+
   constructor(private _userService: UserService, private _router:Router) { }
 
   ngOnInit(): void {
     
   
-    this.users$ = this._userService.getAllUsers().pipe(
+    this.users$ = this._userService.getUsers(this.motCle,this.currentPage, this.limit).pipe(
         map(data =>{
-          console.log("users data >>>", data)
-           return  ({dataState:DataStateEnum.LOADED,data:data})
+          console.log("users dataeeee >>>", data)
+          this.pages= new Array(data[0].total_pages);
+           return  ({dataState:DataStateEnum.LOADED,data:data[0].result})
         }),
           
         startWith({dataState:DataStateEnum.LOADING}),
@@ -32,6 +44,57 @@ export class AccueilComponent implements OnInit {
       )
 
   }
+
+
+  doSearch(){
+  
+      this.users$ =  this._userService.getUsers(this.motCle,this.currentPage, this.limit).pipe(
+      map(data =>{
+        console.log("do search user data >>>", data[0].result)
+   
+        this.pages= new Array(data[0].total_pages);
+        
+        return  ({dataState:DataStateEnum.LOADED,data:data[0].result})
+      }),
+        
+       startWith({dataState:DataStateEnum.LOADING}),
+       catchError(err=>of({dataState:DataStateEnum.ERROR, errorMessage:err.message}))
+    )
+  
+}
+
+
+
+
+
+  gotoPage(i:number){
+    console.log("current page >>>",  this.currentPage=i)
+    this.currentPage=i;
+    this.doSearch();
+  }
+
+  goToPreviousPage(){
+    console.log("previouspage >>>",this.currentPage)
+    this.currentPage = --this.currentPage;
+    this.doSearch();
+   }
+  
+   goToNextPage(){
+     console.log("next page >>>",this.currentPage)
+    this.currentPage = ++this.currentPage;
+    this.doSearch();
+   }
+
+
+   gotoPerPage(perPage:number){
+    console.log("perpage>>>", perPage)
+    this.currentPerPage=perPage;
+    this.limit=perPage;
+    this.doSearch();
+  }
+
+
+
 
  onGetAllUsers()
  { 
@@ -58,22 +121,43 @@ export class AccueilComponent implements OnInit {
 
   }
 
+
+  onDelete(user:any){
+    let confirm = window.confirm("Est vous sure ?")
+    if(confirm){
+    this._userService.deleteUser(user).subscribe(data => {
+       this.onGetAllUsers();
+    })}
+     
+  }
+
+  onSearch(motClet:any){
+    this.users$ =  this._userService.getUsers(motClet,this.currentPage, this.limit).pipe(
+      map(data =>{
+        console.log("do search user data >>>", data[0].result)
+   
+        this.pages= new Array(data[0].total_pages);
+        
+        return  ({dataState:DataStateEnum.LOADED,data:data[0].result})
+      }),
+        
+       startWith({dataState:DataStateEnum.LOADING}),
+       catchError(err=>of({dataState:DataStateEnum.ERROR, errorMessage:err.message}))
+    )}
+
   
   onActionEvent($event: ActionEvent){
     console.log("user event",$event);
     switch($event.type){
-      /*
-      case UserActionsTypes.GET_SELECTED_PRODUCTS: this.onGetSelectedProducts();break;
-      case UserActionsTypes.GET_AVAILABLE_PRODUCTS: this.onGetAvailableProducts();break;
-      case UserActionsTypes.SEARCH_PRODUCTS: this.onSearch($event.payload);break;
-      case UserActionsTypes.NEW_PRODUCT: this.onNewProduct();break;
-      */
-      case UserActionsTypes.ACTIVE_USER: this.onActive($event.payload);break;
-      //case UserActionsTypes.DELETE_PRODUCT: this.onDelete($event.payload);break;
-      /*
-      case UserActionsTypes.EDIT_PRODUCT: this.onUpdate($event.payload);break;
-      */
-}
+
+       case UserActionsTypes.ACTIVE_USER: this.onActive($event.payload);break;
+       case UserActionsTypes.DELETE_USER: this.onDelete($event.payload);break;
+       case UserActionsTypes.Go_TO_PAGE: this.gotoPage($event.payload);break;
+       case UserActionsTypes.Go_TO_PREVIOS_PAGE: this.goToPreviousPage();break;
+       case UserActionsTypes.Go_TO_NEXT_PAGE: this.goToNextPage();break;
+       case UserActionsTypes.Go_TO_PER_PAGE: this.gotoPerPage($event.payload);break;
+       case UserActionsTypes.SEARSH_USER: this.onSearch($event.payload);break;
+     }
 }
 
 

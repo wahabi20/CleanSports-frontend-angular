@@ -4,8 +4,8 @@
     <ng-container class="container" *ngIf="usersInput$ | async as result" [ngSwitch]="result.dataState">
         <ng-container *ngSwitchCase="DataStateEnum.LOADING">
             <div class="d-flex justify-content-center">
-                <div class="spinner-border  text-warning   mt-5" role="status">
-                  <span class="visually-hidden mt-5">Loading...</span>
+                <div class="mt-5" role="status">
+                    <app-spinner></app-spinner>
                 </div>
               </div>
         </ng-container>
@@ -18,10 +18,21 @@
         </ng-container>
     
         <ng-container *ngSwitchCase="DataStateEnum.LOADED">
-            <table class="table mt-5">
+            <div class="card mt-5">
+                
+                <div class="input">
+                    <input  placeholder="Recherche un utilisateur"  type="text" class="form-control" [(ngModel)]="motCle">
+                    <button mat-button (click)="onSearch()">
+                      <mat-icon  >search_outline</mat-icon>
+                      
+                    </button>
+                 </div>
+               
+
+                 <table class="table mt-5">
                 <thead>
                     <tr>
-                    <th>ID</th><th>Name</th><th>Price</th><th>Qunatity</th><th>Selected</th><th>Available</th>
+                    <th>Identifiant</th><th>Nom</th><th>Prénom</th><th>Address</th><th>E-mail</th><th>Status</th><th></th><th></th><th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,10 +43,50 @@
                       *ngFor="let u of result.data" style="display: contents">
 
                   </app-user-item>
-
                 </tbody>
                
             </table>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                      <a class="page-link clicable" (click)="goToPreviousPage()" >Previous</a>
+                    </li>
+                    <li  [ngClass]="{'active':i==currentPage}"      class="page-item" *ngFor="let p of pages; let i=index">
+                      <a    class="page-link clicable" (click)="gotoPage(i)">{{i}}</a>
+                      
+                    </li>
+                  
+                    <li class="page-item">
+                      <a class="page-link clicable"   (click)="goToNextPage()">Next</a>
+                    </li>
+                   </ul>
+                  
+                     <button   class="icon-position item-Style" mat-button [matMenuTriggerFor]="belowMenu">
+                       items per page: 
+                       <span class="currentPage-Style">
+                          {{currentPerPage}} 
+                        </span> 
+                          <mat-icon class="mat-icon-style">keyboard_arrow_down</mat-icon> 
+                       
+                     </button>
+
+
+                        <mat-menu #belowMenu="matMenu" yPosition="below">
+                          <div [ngClass]="{'active':i==currentPerPage}"   *ngFor="let p of pageSizeOptions; let i=index">
+                             <button mat-menu-item  (click)="gotoPerPage(p)"  >{{p}}</button>
+                          </div>
+                        </mat-menu>
+                  
+                      
+          
+              
+               </nav>
+
+
+
+            </div>
+           
         </ng-container>
     
        

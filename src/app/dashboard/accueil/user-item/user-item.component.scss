@@ -1,0 +1,48 @@
+.btn-primary,
+.btn-primary:active,
+.btn-primary:hover,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: rgb(227, 235, 236);
+    color: #1877F2;
+    border-color:rgb(239, 248, 250) ;
+ 
+}
+.btn-success
+{
+    background-color: white;
+    border-color: #27af86;
+    color:#1877F2 ;
+}
+
+.btn-danger
+{
+    background-color: white;
+    border-color: #da3910;
+    color:#1877F2 ;
+}
+
+
+.icon-container
+{
+    margin-left: 60%;
+}
+
+.icon-style
+{
+    margin-right: 5px;
+}
+
+.input{
+    display: flex;
+    
+     flex-direction: row;
+     width: 50%;
+    
+    button{
+          position: absolute;
+      left: 39%;
+      height: 38px;
+    }
+}
+

@@ -35,6 +35,11 @@ export class UserItemComponent implements OnInit {
    
  }
 
+ onAdd(user:any)
+ {
+   this.userEventEmitter.emit({type:UserActionsTypes.EDIT_USER,payload:user});
+ }
+
 
 
 

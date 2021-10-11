@@ -47,4 +47,14 @@ active(user:any): Observable<any>{
 
 
 
+deleteUser(user:any): Observable<void>{
+  console.log("product>>>", user)
+ let host=environment.host;
+ return this.http.delete<void>(host+"/cleansports/api/users/"+user._id);
+}
+
+
+
+
+
 }

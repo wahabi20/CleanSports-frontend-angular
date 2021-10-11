@@ -12,6 +12,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { UsersListComponent } from './accueil/users-list/users-list.component';
 import { UserItemComponent } from './accueil/user-item/user-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthentificationModule } from '../authentification/authentification.module';
 
 
 
@@ -35,6 +37,9 @@ import { UserItemComponent } from './accueil/user-item/user-item.component';
     MatToolbarModule,
     MatSidenavModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AuthentificationModule
     
   ],
   exports: [

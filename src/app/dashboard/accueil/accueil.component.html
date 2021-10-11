@@ -4,5 +4,9 @@
 <app-users-list 
 [usersInput$]="users$"
 (userEventEmitter)="onActionEvent($event)"
+[pages]="pages"
+[currentPage]="currentPage"
+[pageSizeOptions]="pageSizeOptions"
+[currentPerPage]="currentPerPage"
 >
 </app-users-list>
