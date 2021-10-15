@@ -14,6 +14,8 @@ import { UsersListComponent } from './accueil/users-list/users-list.component';
 import { UserItemComponent } from './accueil/user-item/user-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthentificationModule } from '../authentification/authentification.module';
+import { ChartsComponent } from './charts/charts.component';
+import { DashComponent } from './dash/dash.component';
 
 
 
@@ -28,6 +30,8 @@ import { AuthentificationModule } from '../authentification/authentification.mod
     AccueilComponent,
     UsersListComponent,
     UserItemComponent,
+    ChartsComponent,
+    DashComponent,
     
    
   ],

@@ -55,6 +55,11 @@ deleteUser(user:any): Observable<void>{
 
 
 
+usersStatistic(){
+  let host=environment.host;
+  return this.http.get(host+"/cleansports/api/statisticals/users");
+}
+
 
 
 }

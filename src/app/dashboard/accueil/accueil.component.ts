@@ -115,7 +115,6 @@ export class AccueilComponent implements OnInit {
     console.log("u>>>", u)
     this._userService.active(u).subscribe(data => {
       console.log("data>>>", data)
-       // p.selected= data.selected;
        this.onGetAllUsers();
     })
 

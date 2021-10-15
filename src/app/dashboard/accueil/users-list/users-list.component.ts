@@ -18,8 +18,7 @@ export class UsersListComponent implements OnInit {
 
    readonly DataStateEnum=DataStateEnum;
    motCle:string="";
-   //currentPerPage:number=5;
-   //pageSizeOptions=[5, 10, 25];
+   
 
    
 
