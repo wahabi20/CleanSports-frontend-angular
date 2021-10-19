@@ -23,14 +23,22 @@
               <app-dash></app-dash>
             </div>
             <div class="card mt-5 mb-5">
-                
-                <div class="input">
+                <div class="parent_search_and_adduers">
+                   <div class="input">
                     <input  placeholder="Recherche un utilisateur"  type="text" class="form-control" [(ngModel)]="motCle">
-                    <button mat-button (click)="onSearch()">
-                      <mat-icon  >search_outline</mat-icon>
-                      
-                    </button>
-                 </div>
+                      <button mat-button (click)="onSearch()">
+                        <mat-icon>search_outline</mat-icon>
+                      </button>
+                   </div>
+                   <div class="adduser-Button">
+                      <button mat-button (click)="onAddUser()">
+                        <mat-icon style="color: white;">add</mat-icon>
+                         Ajouter un utilisateur
+                      </button>
+                   </div>
+                </div>
+               
+                 
                
 
                  <table class="table mt-5">

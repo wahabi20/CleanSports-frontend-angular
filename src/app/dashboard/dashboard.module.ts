@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthentificationModule } from '../authentification/authentification.module';
 import { ChartsComponent } from './charts/charts.component';
 import { DashComponent } from './dash/dash.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 
@@ -32,9 +34,11 @@ import { DashComponent } from './dash/dash.component';
     UserItemComponent,
     ChartsComponent,
     DashComponent,
-    
+    UpdateUserComponent,
+    AddUserComponent
    
   ],
+  
   imports: [
     CommonModule,
     MaterialModule,

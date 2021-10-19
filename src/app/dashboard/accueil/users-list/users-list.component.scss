@@ -12,6 +12,20 @@ table{
     }
 
     
+.parent_search_and_adduers
+{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.adduser-Button
+{
+    background-color: #1877F2;
+    color: white;
+}
+
+
 .input{
     display: flex;
     
@@ -57,3 +71,10 @@ table{
 .icon-position{
     float:right;
    }
+
+
+.clicable
+{
+    cursor: pointer;
+}
+

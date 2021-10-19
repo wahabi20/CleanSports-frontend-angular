@@ -1,0 +1,160 @@
+
+
+<h2 mat-dialog-title>Ajouter un utilisateur</h2>
+<mat-dialog-content class="mat-typography">
+
+<div class="first-content">
+
+  
+  
+  <form class="example-form">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>FirstName</mat-label>
+      <input type="text" matInput [formControl]="firstNameFormControl" [(ngModel)]="data.first_Name" [errorStateMatcher]="matcher"
+             placeholder="Ex.malek">
+
+      <mat-error *ngIf="firstNameFormControl.hasError('first_Name') && !firstNameFormControl.hasError('required')">
+        Please enter a valid firstname
+      </mat-error>
+      <mat-error *ngIf="firstNameFormControl.hasError('required')">
+         FirstName <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <form class="example-form">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>LastName</mat-label>
+      <input type="text" matInput [formControl]="lastNameFormControl" [(ngModel)]="data.last_Name" [errorStateMatcher]="matcher"
+             placeholder="Ex.malek">
+  
+      <mat-error *ngIf="lastNameFormControl.hasError('name') && !lastNameFormControl.hasError('required')">
+        Please enter a valid lastname
+      </mat-error>
+      <mat-error *ngIf="lastNameFormControl.hasError('required')">
+         LastName <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <form  class="example-form">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" [(ngModel)]="data.email" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  
+
+</div>
+
+
+
+<div class="second-content">
+   <form class="example-form">
+    <mat-form-field class="full-width"  appearance="outline">
+      <mat-label>Addresse</mat-label>
+      <input type="text" matInput [formControl]="AdressFormControl" [(ngModel)]="data.address" [errorStateMatcher]="matcher"
+             placeholder="Ex.tunis">
+
+      <mat-error *ngIf="AdressFormControl.hasError('address') && !AdressFormControl.hasError('required')">
+        Please enter a valid addresse
+      </mat-error>
+      <mat-error *ngIf="AdressFormControl.hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="full-width"  appearance="outline">
+      <mat-label>Mot de passe</mat-label>
+      <input type="password" matInput [formControl]="PasswordFormControl" [(ngModel)]="data.password" [errorStateMatcher]="matcher"
+             placeholder="Ex.tunis">
+
+      <mat-error *ngIf="PasswordFormControl.hasError('password') && !PasswordFormControl.hasError('required')">
+        Please enter a valid password
+      </mat-error>
+      <mat-error *ngIf="PasswordFormControl.hasError('required')">
+        password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <form class="example-form">
+    <mat-form-field class="full-width"  appearance="outline">
+      <mat-label>Confirmer mot de passe</mat-label>
+      <input type="password" matInput [formControl]="PasswordConfirmeFormControl" [(ngModel)]="data.passwordConfirme" [errorStateMatcher]="matcher"
+             placeholder="123@km">
+
+      <mat-error *ngIf="PasswordConfirmeFormControl.hasError('passwordConfirme') && !PasswordConfirmeFormControl.hasError('required')">
+        Please enter a valid confirme password
+      </mat-error>
+      <mat-error *ngIf="PasswordConfirmeFormControl.hasError('required')">
+        password confirme is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  
+
+
+</div>
+
+<div class="thered-content">
+  <form class="example-form">
+    <mat-form-field class="full-width"  appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input type="number" matInput [formControl]="PhoneFormControl" [(ngModel)]="data.phone" [errorStateMatcher]="matcher"
+             placeholder="Ex.phone">
+
+      <mat-error *ngIf="PhoneFormControl.hasError('address') && !PhoneFormControl.hasError('required')">
+        Please enter a valid phone number
+      </mat-error>
+      <mat-error *ngIf="PhoneFormControl.hasError('required')">
+        Phone is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+
+   <form>
+     <mat-form-field  class="full-width" appearance="outline">
+    <mat-label>Date de naissance</mat-label>
+    <input  
+        matInput [formControl]="PhoneFormControl" [(ngModel)]="data.date" [errorStateMatcher]="matcher"
+        placeholder="Entrer votre date de naissance" required  
+        [matDatepicker]="picker" >
+    
+     <mat-error *ngIf="DateFormControl.hasError('date') && !DateFormControl.hasError('required')">
+      Date de naissance est requis
+    </mat-error>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker  ngDefaultControl   #picker color="primary"></mat-datepicker>
+   </mat-form-field>
+   </form>
+
+   <div  class="radio" class="radio">
+    <mat-radio-group labelPosition="before"   [(ngModel)]="data.isAdmin">
+      <mat-radio-button    [value]="1">Admin</mat-radio-button>
+      <mat-radio-button    [value]="2">User</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  
+</div>
+
+ 
+
+
+<div class="forty-content">
+  <mat-dialog-actions align="end">
+  <button mat-raised-button color="warn" mat-dialog-close>Anuller</button>
+  <button  mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Ajouter</button>
+  
+  </mat-dialog-actions>
+</div>

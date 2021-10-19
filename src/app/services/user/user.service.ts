@@ -61,5 +61,12 @@ usersStatistic(){
 }
 
 
+addUser(data:any)
+{
+  let host=environment.host;
+  return this.http.post<any>(host+"/cleansports/api/users/register",data);
+
+}
+
 
 }

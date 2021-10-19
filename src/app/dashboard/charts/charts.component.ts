@@ -31,7 +31,7 @@ export class ChartsComponent implements OnInit {
        
       type:this.type as ChartType,
       data: {
-          labels: ['Total Users','Active Users','Desactive Users'],
+          labels: ['nombre total utilisateurs','utilisateurs actifs','utilisateurs inactifs'],
           datasets: [{
               label: '# of Votes',
               data: this.state,

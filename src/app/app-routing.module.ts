@@ -5,6 +5,7 @@ import { LoginComponent } from './authentification/login/login.component';
 import { RegisterComponent } from './authentification/register/register.component';
 import { ResetPasswordComponent } from './authentification/resetpassword/reset-password/reset-password.component';
 import { AccueilComponent } from './dashboard/accueil/accueil.component';
+import { AddUserComponent } from './dashboard/add-user/add-user.component';
 import { ManageUsersComponent } from './dashboard/manage-users/manage-users.component';
 
 import { HomeComponent } from './god/home/home/home.component';
@@ -77,6 +78,7 @@ const routes: Routes = [
     },
     { path: 'Dashboard', component: AccueilComponent},
     { path: 'users', component: ManageUsersComponent},
+    { path: 'add-user', component: AddUserComponent},
 
    
   
