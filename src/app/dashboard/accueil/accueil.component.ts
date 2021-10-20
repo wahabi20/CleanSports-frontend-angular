@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map, startWith } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user/user.service';
 import { ActionEvent, AppDataState, DataStateEnum, UserActionsTypes } from 'src/app/state/user.state';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { UpdateUserComponent } from '../update-user/update-user.component';
 
 @Component({
   selector: 'app-accueil',
@@ -27,9 +31,19 @@ export class AccueilComponent implements OnInit {
 
 
 
-  constructor(private _userService: UserService, private _router:Router) { }
+  constructor(
+     private _userService: UserService,
+     public dialog: MatDialog,
+     private _router: Router,
+     private _snackBar: MatSnackBar
 
-  ngOnInit(): void {
+     ) { }
+
+ 
+ 
+ 
+ 
+     ngOnInit(): void {
     
   
     this.users$ = this._userService.getUsers(this.motCle,this.currentPage, this.limit).pipe(
@@ -63,10 +77,6 @@ export class AccueilComponent implements OnInit {
   
 }
 
-
-
-
-
   gotoPage(i:number){
     console.log("current page >>>",  this.currentPage=i)
     this.currentPage=i;
@@ -92,8 +102,6 @@ export class AccueilComponent implements OnInit {
     this.limit=perPage;
     this.doSearch();
   }
-
-
 
 
  onGetAllUsers()
@@ -125,7 +133,7 @@ export class AccueilComponent implements OnInit {
     let confirm = window.confirm("Est vous sure ?")
     if(confirm){
     this._userService.deleteUser(user).subscribe(data => {
-       this.onGetAllUsers();
+       this.doSearch();
     })}
      
   }
@@ -144,6 +152,152 @@ export class AccueilComponent implements OnInit {
        catchError(err=>of({dataState:DataStateEnum.ERROR, errorMessage:err.message}))
     )}
 
+
+
+ onUpdate(user:any)
+    {
+      console.log("user updayted>>>", user)
+      const dialogRef = this.dialog.open(UpdateUserComponent, {
+        width: '990px',
+        height:'600px',
+        data:{
+          first_Name: user.first_Name ,
+          last_Name: user.last_Name,
+          address: user.address,
+          isAdmin: user.isAdmin,
+          email: user.email,
+          date:user.dateOfBirth,
+          password:user.password,
+          passwordConfirme:user.password_Confirm,
+          phone:user.phone_Number,
+          pts:user.pts
+        }
+      });
+      /* get*/
+      dialogRef.afterClosed().subscribe(result => {
+        console.log("data from dialog >>>", result)
+        if(result.isAdmin == "1")
+        {
+           result.isAdmin = true;
+        }else{
+          result.isAdmin = false;
+        }
+    
+          let dataUser = {
+            "first_Name": result.first_Name,
+            "last_Name": result.last_Name,
+            "email": result.email,
+            "password": result.password,
+            "password_Confirm": result.passwordConfirme,
+            "address":result.address,
+            "dateOfBirth": result.date,
+            "phone_Number":result.phone,
+            "isAdmin":result.isAdmin,
+            "pts":result.pts,
+            "_id":user._id
+          }
+         
+        this._userService.updateUser(dataUser).subscribe(resp =>{
+            
+                 console.log('resp of user dialog>>>', resp);
+                 
+                 this._snackBar.open("Utilisateur modifier avec success",'', {
+                  duration: 2000,
+                 
+                  panelClass: ['mat-toolbar','mat-accent']
+              });
+            
+              this.doSearch();
+    
+        }, err => {
+         
+                  console.log("this error>>>", err.error)
+                  this._snackBar.open("Utilisateur ne pas modifier "+ `${err.error}`,'', {
+                    duration: 2000,
+                   
+                    panelClass: ['mat-toolbar','mat-warn']
+                });
+              })
+    
+    
+       
+    
+    
+       
+      });
+    }
+
+
+ onAddUser()
+    {
+        
+      
+      const dialogRef = this.dialog.open(AddUserComponent, {
+        width: '990px',
+        height:'600px',
+        data:{
+        
+        }
+      });
+      /* get*/
+      dialogRef.afterClosed().subscribe(result => {
+        console.log("data from dialog >>>", result)
+        if(result.isAdmin == "1")
+        {
+           result.isAdmin = true;
+        }else{
+          result.isAdmin = false;
+        }
+  
+          let dataUser = {
+            "first_Name": result.first_Name,
+            "last_Name": result.last_Name,
+            "email": result.email,
+            "password": result.password,
+            "password_Confirm": result.passwordConfirme,
+            "address":result.address,
+            "dateOfBirth": result.date,
+            "phone_Number":result.phone,
+            "isAdmin":result.isAdmin,
+            "pts": result.pts
+          }
+         
+        this._userService.addUser(dataUser).subscribe(resp =>{
+            
+                 console.log('resp of user dialog>>>', resp);
+                 this._snackBar.open("user created sucessfully",'', {
+                  duration: 2000,
+                 
+                  panelClass: ['mat-toolbar','mat-accent']
+              });
+              this.doSearch();
+        
+  
+        }, err => {
+         
+                  console.log("this error>>>", err.error)
+                  this._snackBar.open("Utilisateur ne pas creer "+ `${err.error}`,'', {
+                    duration: 3000,
+                   
+                    panelClass: ['mat-toolbar','mat-warn']
+                });
+              })
+  
+  
+       
+  
+  
+       
+      });
+  
+    
+    }
+  
+  
+
+
+
+
   
   onActionEvent($event: ActionEvent){
     console.log("user event",$event);
@@ -156,6 +310,8 @@ export class AccueilComponent implements OnInit {
        case UserActionsTypes.Go_TO_NEXT_PAGE: this.goToNextPage();break;
        case UserActionsTypes.Go_TO_PER_PAGE: this.gotoPerPage($event.payload);break;
        case UserActionsTypes.SEARSH_USER: this.onSearch($event.payload);break;
+       case UserActionsTypes.EDIT_USER: this.onUpdate($event.payload);break;
+       case UserActionsTypes.ADD_USER: this.onAddUser();break;
      }
 }
 

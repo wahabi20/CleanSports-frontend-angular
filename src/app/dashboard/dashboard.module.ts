@@ -18,6 +18,8 @@ import { ChartsComponent } from './charts/charts.component';
 import { DashComponent } from './dash/dash.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 
 
 
@@ -54,6 +56,10 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent
+  ],
+  providers:[
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,useValue: {}} ,
+    {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: { color: 'primary' },} 
   ]
 })
 export class DashboardModule { }

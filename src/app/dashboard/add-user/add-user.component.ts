@@ -25,7 +25,7 @@ export class AddUserComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any ,
-    private fb: FormBuilder,
+   
   ) { }
   
   
@@ -36,11 +36,7 @@ export class AddUserComponent implements OnInit {
   
  
 
-  
-  onClose(): void {
-    this.dialogRef.close();
-   }
-
+ 
 
 
 
@@ -85,7 +81,12 @@ export class AddUserComponent implements OnInit {
      Validators.required, Validators.minLength(8)
 
    ])
-    
+
+   NbPointsFormControl = new FormControl('',
+     [
+      Validators.required, 
+
+     ])
  
      matcher = new MyErrorStateMatcher();
  

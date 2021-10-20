@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { ActionEvent, AppDataState, DataStateEnum, UserActionsTypes } from 'src/app/state/user.state';
 import { AddUserComponent } from '../../add-user/add-user.component';
+import { UpdateUserComponent } from '../../update-user/update-user.component';
 
 @Component({
   selector: 'app-users-list',
@@ -31,13 +33,22 @@ export class UsersListComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private _router: Router,
-    private _userService:UserService
+    private _userService:UserService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
   }
 
+onUpadte(user:any){
+  
+}
+ 
+   
 
+
+
+/*
   onAddUser()
   {
       
@@ -49,7 +60,7 @@ export class UsersListComponent implements OnInit {
       
       }
     });
-    /* get*/
+    
     dialogRef.afterClosed().subscribe(result => {
       console.log("data from dialog >>>", result)
       if(result.isAdmin == "1")
@@ -68,39 +79,50 @@ export class UsersListComponent implements OnInit {
           "address":result.address,
           "dateOfBirth": result.date,
           "phone_Number":result.phone,
-          "isAdmin":result.isAdmin
+          "isAdmin":result.isAdmin,
+          "pts": result.pts
         }
        
       this._userService.addUser(dataUser).subscribe(resp =>{
-          try{
+          
                console.log('resp of user dialog>>>', resp);
-               this._router.navigate(['/Dashboard']);
+               this._snackBar.open("user created sucessfully",'', {
+                duration: 2000,
+               
+                panelClass: ['mat-toolbar','mat-accent']
+            });
+              // this._router.navigate(['/Dashboard']);
 
-          }catch(ex){
-             console.log('error', ex);
+      }, err => {
+       
+                console.log("this error>>>", err.error)
+                this._snackBar.open("Utilisateur ne pas creer "+ `${err.error}`,'', {
+                  duration: 3000,
+                 
+                  panelClass: ['mat-toolbar','mat-warn']
+              });
+            })
 
-          }
+
+     
 
 
-      })
-
-
-      console.log("Your Name name: " + result.name);
-      console.log("Your Name email: " + result.email);
-      console.log("Your Name address: " + result.address);
-      console.log("Your Name role: " + result.role);
-      console.log("Your password: " + result.password);
-      console.log("Your password confirmd: " + result.passwordConfirmed);
+     
     });
 
   
   }
 
 
+*/
 
 
-
-
+onAddUser()
+{
+  this.userEventEmitter.emit({
+    type: UserActionsTypes.ADD_USER,payload: {}
+   });
+}
 
   gotoPage(i:number)
   {

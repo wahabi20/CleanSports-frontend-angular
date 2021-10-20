@@ -78,3 +78,8 @@ table{
     cursor: pointer;
 }
 
+
+::ng-deep .mat-primary{
+   // color:white;
+    background: 'yellow' !important;
+ }

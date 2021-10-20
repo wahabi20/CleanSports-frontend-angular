@@ -123,11 +123,11 @@
   </form>
 
 
-   <form>
+   <form class="date-form">
      <mat-form-field  class="full-width" appearance="outline">
     <mat-label>Date de naissance</mat-label>
     <input  
-        matInput [formControl]="PhoneFormControl" [(ngModel)]="data.date" [errorStateMatcher]="matcher"
+        matInput [formControl]="DateFormControl" [(ngModel)]="data.date" [errorStateMatcher]="matcher"
         placeholder="Entrer votre date de naissance" required  
         [matDatepicker]="picker" >
     
@@ -138,16 +138,32 @@
     <mat-datepicker  ngDefaultControl   #picker color="primary"></mat-datepicker>
    </mat-form-field>
    </form>
+   
+   
+   <form class="example-form">
+    <mat-form-field class="full-width"  appearance="outline">
+      <mat-label>Nombre de points</mat-label>
+      <input type="number" matInput [formControl]="NbPointsFormControl" [(ngModel)]="data.pts" [errorStateMatcher]="matcher"
+             placeholder="0">
 
-   <div  class="radio" class="radio">
-    <mat-radio-group labelPosition="before"   [(ngModel)]="data.isAdmin">
-      <mat-radio-button    [value]="1">Admin</mat-radio-button>
-      <mat-radio-button    [value]="2">User</mat-radio-button>
-    </mat-radio-group>
-  </div>
+      <mat-error *ngIf="NbPointsFormControl.hasError('address') && !NbPointsFormControl.hasError('required')">
+        Please enter a valid number
+      </mat-error>
+      <mat-error *ngIf="NbPointsFormControl.hasError('required')">
+        nombre de points is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+   
   
 </div>
-
+<div  class="radio">
+  <mat-radio-group labelPosition="before"   [(ngModel)]="data.isAdmin">
+    <mat-radio-button    [value]="1">Admin</mat-radio-button>
+    <mat-radio-button    [value]="2">User</mat-radio-button>
+  </mat-radio-group>
+</div>
  
 
 

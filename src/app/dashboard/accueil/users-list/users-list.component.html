@@ -65,7 +65,7 @@
                       <a class="page-link clicable" (click)="goToPreviousPage()" >Previous</a>
                     </li>
                     <li  [ngClass]="{'active':i==currentPage}"      class="page-item" *ngFor="let p of pages; let i=index">
-                      <a    class="page-link clicable" (click)="gotoPage(i)">{{i}}</a>
+                      <a    class="page-link clicable" (click)="gotoPage(i)">{{i+1}}</a>
                       
                     </li>
                   

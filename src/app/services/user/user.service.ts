@@ -68,5 +68,10 @@ addUser(data:any)
 
 }
 
+updateUser(user:any)
+{
+  let host=environment.host;
+  return this.http.put<any>(host+"/cleansports/api/users/"+user._id,user);
+}
 
 }

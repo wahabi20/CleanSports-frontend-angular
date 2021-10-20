@@ -12,76 +12,82 @@
     margin: 0 auto;
     align-items: center;
     flex-direction: column;
-   // padding: 0 20px;
-   // margin-top: 8%;
+ }
     
-    }
-    
-    .first-content{
+.first-content{
     width: 100%;
     display: flex;
     flex-direction: row;
-    //align-items: center;
-    //justify-content: center;
      padding-left: 5%;
-    }
+}
     
-    .second-content{
+.second-content{
     width: 100%;
     display: flex;
     flex-direction: row;
-    //align-items: center;
-    //justify-content: center;
     padding-left: 5%;
-    }
+}
     
-    .thered-content{
+.thered-content{
     width: 100%;
     display: flex;
     flex-direction: row;
-    //align-items: center;
-    //justify-content: center;
     padding-left: 5%;
-    }
+}
     
-    .example-form {
+.example-form {
       flex-direction: column;
       min-width: 300px;
       max-width: 800px;
-    
-    
-    }
-    .radio
-    {
-      flex-direction: column;
-      min-width: 300px;
-      max-width: 800px;
-      margin-left: 5%;
       
-    }
-    .example-full-width {
+}
+.date-form
+{
+      flex-direction: column;
+      min-width: 300px;
+      max-width: 900px;
+     
+}
+.radio
+  {
+      flex-direction: column;
+      min-width: 300px;
+      max-width: 800px;
+     // margin-left: 2%;
+      
+  }
+
+.example-full-width {
       width: 80%;
       margin: 5% 10%;
-    }
+}
     
-    .mat-radio-button {
+.mat-radio-button {
       margin: 9%;
-    }
+}
     
-    .forty-content{
+.forty-content{
     
       display: flex;
       align-self: flex-end;
       min-width: 100px;
       width: 20%;
       height: 100px;
-      margin-right: 4%;   
+     // margin-right: 2%;   
     
-    }
+}
     
-    .mat-dialog-actions{
+.mat-dialog-actions{
       margin:0 auto;
     
-    
-    }
+}
+
+.mat-form-field {
+      font-size: inherit;
+      font-weight: 400;
+      line-height: 1.125;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      letter-spacing: normal;
+      width: 80%;
+  }
     
