@@ -12,6 +12,7 @@ import { StarComponent } from './star/star.component';
 import { MarketComponent } from './market/market.component';
 import { SpinnerComponent } from '../authentification/components/spinner/spinner.component';
 import { AuthentificationModule } from '../authentification/authentification.module';
+import { AddTeamComponent } from './add-team/add-team.component';
 
 
 
@@ -21,7 +22,8 @@ import { AuthentificationModule } from '../authentification/authentification.mod
     PlayerComponent,
     TeamComponent,
     StarComponent,
-    MarketComponent
+    MarketComponent,
+    AddTeamComponent
     
   ],
   imports: [

@@ -133,10 +133,25 @@ export class AccueilComponent implements OnInit {
     let confirm = window.confirm("Est vous sure ?")
     if(confirm){
     this._userService.deleteUser(user).subscribe(data => {
+      this._snackBar.open("Utilisateur supprimer avec success",'', {
+        duration: 2000,
+       
+        panelClass: ['mat-toolbar','mat-accent']
+    });
        this.doSearch();
-    })}
-     
+    }, err => {
+         
+      console.log("this error>>>", err.error)
+      this._snackBar.open("Utilisateur ne supprimer pas"+ `${err.error}`,'', {
+        duration: 3000,
+       
+        panelClass: ['mat-toolbar','mat-warn']
+    })
   }
+    )} 
+
+}
+  
 
   onSearch(motClet:any){
     this.users$ =  this._userService.getUsers(motClet,this.currentPage, this.limit).pipe(

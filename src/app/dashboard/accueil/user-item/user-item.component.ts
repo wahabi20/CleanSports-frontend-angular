@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { ActionEvent, UserActionsTypes } from 'src/app/state/user.state';
+
 
 @Component({
   selector: 'app-user-item',
@@ -11,11 +13,12 @@ export class UserItemComponent implements OnInit {
   @Input()  user:any|null=null;
   @Output() userEventEmitter : EventEmitter<ActionEvent> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    
+  ) { }
 
   ngOnInit(): void {
   }
-
 
   
   onActive(user: any){
@@ -32,7 +35,7 @@ export class UserItemComponent implements OnInit {
 
  onUpdate(user: any){
    this.userEventEmitter.emit({type:UserActionsTypes.EDIT_USER,payload:user});
-   
+  
  }
 
  onAdd(user:any)

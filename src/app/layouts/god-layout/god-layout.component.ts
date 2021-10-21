@@ -1,9 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 //import {PostService} from '../../services/post.service';
 import {Subscription} from 'rxjs';
+import { AddTeamComponent } from 'src/app/god/add-team/add-team.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
 //import {AuthService, UserData} from '../../services/auth.service';
 
 @Component({
@@ -27,7 +31,10 @@ export class GodLayoutComponent implements OnInit {
 
 
   constructor(public _authService: AuthService,
-              private _router:Router,
+              public dialog: MatDialog,
+              private _router: Router,
+              private _snackBar: MatSnackBar,
+              private _userService: UserService
             ) {
                
   }
@@ -70,6 +77,70 @@ export class GodLayoutComponent implements OnInit {
   gotoDashboard()
   {
     this._router.navigate(['/Dashboard']);
+  }
+  /* dialog  */
+  gotoAddTeam()
+  {
+ 
+    const dialogRef = this.dialog.open(AddTeamComponent, {
+      width: '990px',
+      height:'600px',
+      data:{
+      
+      }
+    });
+    /* get*/
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("data from dialog >>>", result)
+      if(result.isAdmin == "1")
+      {
+         result.isAdmin = true;
+      }else{
+        result.isAdmin = false;
+      }
+
+        let dataUser = {
+          "first_Name": result.first_Name,
+          "last_Name": result.last_Name,
+          "email": result.email,
+          "password": result.password,
+          "password_Confirm": result.passwordConfirme,
+          "address":result.address,
+          "dateOfBirth": result.date,
+          "phone_Number":result.phone,
+          "isAdmin":result.isAdmin,
+          "pts": result.pts
+        }
+       
+      this._userService.addUser(dataUser).subscribe(resp =>{
+          
+               console.log('resp of user dialog>>>', resp);
+               this._snackBar.open("user created sucessfully",'', {
+                duration: 2000,
+               
+                panelClass: ['mat-toolbar','mat-accent']
+            });
+            
+      
+
+      }, err => {
+       
+                console.log("this error>>>", err.error)
+                this._snackBar.open("Utilisateur ne pas creer "+ `${err.error}`,'', {
+                  duration: 3000,
+                 
+                  panelClass: ['mat-toolbar','mat-warn']
+              });
+            })
+
+
+     
+
+
+     
+    });
+
+
   }
 
   postMessage(form: NgForm): void {

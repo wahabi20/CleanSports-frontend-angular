@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './authentification/resetpassword/reset-p
 import { AccueilComponent } from './dashboard/accueil/accueil.component';
 import { AddUserComponent } from './dashboard/add-user/add-user.component';
 import { ManageUsersComponent } from './dashboard/manage-users/manage-users.component';
+import { AddTeamComponent } from './god/add-team/add-team.component';
 
 import { HomeComponent } from './god/home/home/home.component';
 import { MarketComponent } from './god/market/market.component';
@@ -56,6 +57,7 @@ const routes: Routes = [
     { path: 'teams', component: TeamComponent},
     { path: 'stars', component: StarComponent},
     { path: 'marketplace', component: MarketComponent},
+    { path: 'addteam', component: AddTeamComponent},
    
     {
       path: 'home',
