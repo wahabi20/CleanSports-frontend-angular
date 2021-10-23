@@ -25,7 +25,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {MatSelectModule} from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const materials = [
   MatButtonModule,
@@ -56,7 +57,10 @@ const materials = [
   MatSidenavModule,
   FlexLayoutModule,
   MatMenuModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSelectModule,
+  MatAutocompleteModule,
+ 
 ]
 
 @NgModule({

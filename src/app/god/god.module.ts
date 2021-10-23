@@ -34,6 +34,10 @@ import { AddTeamComponent } from './add-team/add-team.component';
     RouterModule,
     GodRoutingModule,
     AuthentificationModule
+  ],
+  exports: [
+    
   ]
+
 })
 export class GodModule { }

@@ -83,7 +83,7 @@ export class GodLayoutComponent implements OnInit {
   {
  
     const dialogRef = this.dialog.open(AddTeamComponent, {
-      width: '990px',
+      width: '600px',
       height:'600px',
       data:{
       

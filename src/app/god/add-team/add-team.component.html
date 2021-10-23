@@ -1,1 +1,121 @@
-<p>add-team works!</p>
+<diV class="body">
+     <div class="headre">
+         <div class="add-team-field">
+            <mat-icon>add_circle</mat-icon>
+             <span style="margin-left: 4%">Creation d'une equipe</span>
+
+         </div>
+
+     </div>
+        <div class="container">
+            <form (ngSubmit)="onAddTeam()" name="addTeamForm" [formGroup]="addTeamForm">
+                
+                <div class="team-name mt-4">
+                    <span class="mb-2">Nom d'equipe</span>
+                    <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Nom d'equipe</mat-label>
+                    <input
+                        formControlName="name"
+                        matInput
+                        placeholder="Enter votre nom" required
+                        
+                    />
+                    <mat-error *ngIf="!addTeamForm.controls.name.valid">
+                        Nom est requis
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="team-name mt-2">
+                    <span class="mb-2">Nombre des jouers</span>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre du jouers</mat-label>
+                        <mat-select formControlName="nb">
+                          
+                          <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                              {{topping}}
+
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!addTeamForm.controls.nb.valid">
+                            nombre de jouers est requis
+                         </mat-error>
+                      </mat-form-field>
+                </div>
+
+                <div class="team-name mt-2">
+                   <form>
+                       
+
+
+                    <span>Liste des jouers</span>
+                     <mat-form-field class="example-chip-list mt-3" appearance="outline">
+                        
+                        <mat-label>Liste des jouers</mat-label>
+                        <mat-chip-list #chipList aria-label="Fruit selection">
+                          <mat-chip
+                            *ngFor="let fruit of fruits"
+                            [selectable]="selectable"
+                            [removable]="removable"
+                            (removed)="remove(fruit)">
+                            {{fruit}}
+                            <button matChipRemove *ngIf="removable">
+                              <mat-icon>cancel</mat-icon>
+                            </button>
+                          </mat-chip>
+                          <input
+                            placeholder="nouveaux jouers..."
+                            #fruitInput
+                            [formControl]="myControl"
+                            [matAutocomplete]="auto"
+                            [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete"   (optionSelected)="selected($event)">
+                          <mat-option *ngFor="let fruit of filteredOptions | async" [value]="fruit">
+                            {{fruit}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                   </form>
+                        
+                   
+                      
+                   
+                     
+                </div>
+
+                 <div class="btn mt-5">
+                      
+                      <button  class="btn-cancel" >Annuler</button>
+                      <button mat-flat-button color="primary" class="float-right" >Enregistrer</button>
+                 </div>
+                 
+
+            </form>
+             
+
+
+
+        </div>
+       
+
+    
+
+
+
+</diV>
+
+
+
+<!--
+    <mat-form-field>
+                         <input type="text" matInput [matAutocomplete]="auto" [formControl]="myControl"  />
+                         <mat-autocomplete #auto="matAutocomplete"  >
+                             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                 {{option}}
+                             </mat-option>
+                         </mat-autocomplete>
+                     </mat-form-field>
+-->
