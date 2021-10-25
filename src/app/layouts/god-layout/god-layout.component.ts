@@ -92,51 +92,7 @@ export class GodLayoutComponent implements OnInit {
     /* get*/
     dialogRef.afterClosed().subscribe(result => {
       console.log("data from dialog >>>", result)
-      if(result.isAdmin == "1")
-      {
-         result.isAdmin = true;
-      }else{
-        result.isAdmin = false;
-      }
-
-        let dataUser = {
-          "first_Name": result.first_Name,
-          "last_Name": result.last_Name,
-          "email": result.email,
-          "password": result.password,
-          "password_Confirm": result.passwordConfirme,
-          "address":result.address,
-          "dateOfBirth": result.date,
-          "phone_Number":result.phone,
-          "isAdmin":result.isAdmin,
-          "pts": result.pts
-        }
-       
-      this._userService.addUser(dataUser).subscribe(resp =>{
-          
-               console.log('resp of user dialog>>>', resp);
-               this._snackBar.open("user created sucessfully",'', {
-                duration: 2000,
-               
-                panelClass: ['mat-toolbar','mat-accent']
-            });
-            
-      
-
-      }, err => {
-       
-                console.log("this error>>>", err.error)
-                this._snackBar.open("Utilisateur ne pas creer "+ `${err.error}`,'', {
-                  duration: 3000,
-                 
-                  panelClass: ['mat-toolbar','mat-warn']
-              });
-            })
-
-
-     
-
-
+      this._router.navigate(['/home']);
      
     });
 
@@ -158,9 +114,6 @@ export class GodLayoutComponent implements OnInit {
     */
   }
 
-  logout(): void {
-    //this.authService.Logout();
-  }
 
   gotohome()
   {

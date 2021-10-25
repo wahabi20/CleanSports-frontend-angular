@@ -52,13 +52,14 @@
                      <mat-form-field class="example-chip-list mt-3" appearance="outline">
                         
                         <mat-label>Liste des jouers</mat-label>
-                        <mat-chip-list #chipList aria-label="Fruit selection">
+                        <mat-chip-list #chipList aria-label="Player selection">
                           <mat-chip
-                            *ngFor="let fruit of fruits"
+                            *ngFor="let player of defaultplayers"
+                            
                             [selectable]="selectable"
                             [removable]="removable"
-                            (removed)="remove(fruit)">
-                            {{fruit}}
+                            (removed)="remove(player)">
+                            {{player}}
                             <button matChipRemove *ngIf="removable">
                               <mat-icon>cancel</mat-icon>
                             </button>
@@ -66,18 +67,25 @@
                           <input
                             placeholder="nouveaux jouers..."
                             #fruitInput
-                            [formControl]="myControl"
+                            formControlName="player"
+                            #query
+                            (keyup)="search(query.value)"
                             [matAutocomplete]="auto"
                             [matChipInputFor]="chipList"
                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                             (matChipInputTokenEnd)="add($event)">
-                        </mat-chip-list>
-                        <mat-autocomplete #auto="matAutocomplete"   (optionSelected)="selected($event)">
-                          <mat-option *ngFor="let fruit of filteredOptions | async" [value]="fruit">
-                            {{fruit}}
-                          </mat-option>
-                        </mat-autocomplete>
-                      </mat-form-field>
+                          </mat-chip-list>
+                          <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let player of searchplayer" [value]="player">
+                              
+                                <img   mat-card-avatar src="{{player.logo}}">
+                                {{player.first_Name}}
+                                {{player.last_Name}}
+                                
+                              
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
                    </form>
                         
                    
@@ -88,8 +96,8 @@
 
                  <div class="btn mt-5">
                       
-                      <button  class="btn-cancel" >Annuler</button>
-                      <button mat-flat-button color="primary" class="float-right" >Enregistrer</button>
+                      <button  class="btn-cancel" mat-raised-button  mat-dialog-close >Annuler</button>
+                      <button mat-flat-button color="primary" class="float-right"  (click)="onAddTeam()" >Enregistrer</button>
                  </div>
                  
 
@@ -107,15 +115,3 @@
 
 </diV>
 
-
-
-<!--
-    <mat-form-field>
-                         <input type="text" matInput [matAutocomplete]="auto" [formControl]="myControl"  />
-                         <mat-autocomplete #auto="matAutocomplete"  >
-                             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                                 {{option}}
-                             </mat-option>
-                         </mat-autocomplete>
-                     </mat-form-field>
--->

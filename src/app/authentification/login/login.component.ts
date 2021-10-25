@@ -60,7 +60,8 @@ export class LoginComponent implements OnInit {
       console.log('resp from loginUserData>>>', resp);
       this.isLoading = false;
        localStorage.setItem('token',resp.token)
-       localStorage.setItem('isAdmin',resp.user.isAdmin)
+       localStorage.setItem('isAdmin',resp.user.isAdmin);
+       localStorage.setItem('id',resp.user._id);
        //alert("login Successfully");
        this._router.navigate(['/home']);
 

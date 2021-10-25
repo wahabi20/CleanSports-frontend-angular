@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -35,6 +36,14 @@ getAllUsers():Observable<any>{
 }
 
 
+getUserNames()
+{
+  let host= environment.host;
+ return this.http.get<any>(host+'/cleansports/api/users')
+ .pipe(
+   map((response:[]) => response.map(item => item['first_Name']))
+ )
+}
 
 
 active(user:any): Observable<any>{

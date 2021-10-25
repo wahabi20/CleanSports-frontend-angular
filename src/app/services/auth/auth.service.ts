@@ -49,6 +49,7 @@ isAdminUser()
 logoutUser(){
   localStorage.removeItem('token');
   localStorage.removeItem('isAdmin');
+  localStorage.removeItem('id');
   this._router.navigate(['/auth']);
 }
 
