@@ -167,13 +167,65 @@
     <div class="inside">
       
       <div>
-        <mat-icon>people</mat-icon>
-        <span>Vos equipe</span>
+       
+
+
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon style="margin-top: -6px; margin-right: 13px;">people</mat-icon>
+                Vos equipe
+              </mat-panel-title>
+              <mat-panel-description>
+               
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div *ngFor="let team of teamList" >
+                <img   mat-card-avatar src="{{teamList.logo}}">
+                <p>{{teamList.name}}</p> 
+                <p>{{teamList.pts}}</p> 
+              
+            </div>
+           
+          </mat-expansion-panel>
+         
+        </mat-accordion>
+
+
+
       </div>
 
       <div>
-        <mat-icon>directions_run</mat-icon>
-        <span>Vos joueurs</span>
+       
+
+
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon style="margin-top: -2px; margin-right: 13px;">directions_run</mat-icon>
+                Vos joueurs
+              </mat-panel-title>
+              <mat-panel-description>
+               
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div *ngFor="let player of playerList">
+              
+                <img   mat-card-avatar src="{{player.logo}}">
+                
+                <p>{{player.first_Name}}</p> 
+                <p>{{player.last_Name}}</p> 
+                <p>{{player.pts}}</p> 
+            </div>
+           
+          </mat-expansion-panel>
+         
+        </mat-accordion>
+
+
+
       </div>
 
       <div>

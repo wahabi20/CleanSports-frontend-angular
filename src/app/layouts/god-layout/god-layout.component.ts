@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Subscription} from 'rxjs';
 import { AddTeamComponent } from 'src/app/god/add-team/add-team.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { TeamService } from 'src/app/services/team/team.service';
 import { UserService } from 'src/app/services/user/user.service';
 //import {AuthService, UserData} from '../../services/auth.service';
 
@@ -28,13 +29,15 @@ export class GodLayoutComponent implements OnInit {
   subs: Subscription[] = [];
   posts: any[] = [];
   panelOpenState = false;
-
+  teamList: any;
+  playerList:any[] = new Array();
 
   constructor(public _authService: AuthService,
               public dialog: MatDialog,
               private _router: Router,
               private _snackBar: MatSnackBar,
-              private _userService: UserService
+              private _userService: UserService,
+              private _teamService: TeamService
             ) {
                
   }
@@ -54,6 +57,55 @@ export class GodLayoutComponent implements OnInit {
       console.log(user);
     }));
 */
+  
+   this.getUserTeam();
+}
+
+
+
+
+  
+  getUserTeam()
+  {
+    this._teamService.getTeam().subscribe(response => {
+      console.log("team list >>>",response[0].team.teamId[0])
+       this.teamList = response[0].team.teamId[0];
+       this.playerList = response[0].team.teamId.userId;
+       const data:any[] = response[0].team.teamId;
+       data.filter(
+        (p) => {
+           p.userId
+           console.log('pppp', p.userId)
+           this.playerList = (p.userId) 
+           console.log("team list222 >>>",this.playerList)
+        },
+        
+       )
+      
+
+      // this.playerList = response[0].team.teamId.userId;
+      // console.log("team list222 >>>",this.playerList)
+       /*
+      response[0].team.teamId.map((item:any) => 
+        item.map((p:any) =>  this.playerList = p )
+       
+        );
+       
+        */
+      /*
+      const array = response[0].team.teamId;
+      console.log("array>>>",array)
+      array.map((item:any[]) => {
+        console.log("item userId>>>",item)
+        this.playerList.push(item);
+       console.log("team list222 >>>",this.playerList)
+      }
+        
+        
+        )
+       */
+      
+    })
   }
 
   gotolistUser()
@@ -90,12 +142,12 @@ export class GodLayoutComponent implements OnInit {
       }
     });
     /* get*/
+    
     dialogRef.afterClosed().subscribe(result => {
-      console.log("data from dialog >>>", result)
-      this._router.navigate(['/home']);
-     
+      console.log("data from dialog add team >>>", result)
+   //   this._router.navigate(['/home']);
+        this._router.navigate(['/home']);
     });
-
 
   }
 

@@ -133,6 +133,8 @@ selected(event: MatAutocompleteSelectedEvent): void {
 
   onAddTeam()
   {
+
+   
     console.log("data from addTeamForm", this.addTeamForm);
     console.log("liste des id from add Team >>>", this.playerslistID[0])
     console.log("liste des id from add Team >>>", this.playerslistID[1])
@@ -152,16 +154,19 @@ selected(event: MatAutocompleteSelectedEvent): void {
         this._teamService.addTeam(TeamData).subscribe(resp => {
           console.log("response >>>", resp)
 
+         // this.dialogRef.close();
+        //  this._router.navigate(['/home']);
+
           this._snackBar.open("Votre equipe est creer avec success",'', {
-            duration: 2000,
+            duration: 3000,
            
-            panelClass: ['mat-toolbar','mat-accent']
+            panelClass: ['mat-toolbar','mat-primary']
         });
 
-
-         // this._router.navigate(['/home']);
-           this.dialogRef.close();
-
+          
+         // 
+            
+           //
         }, err => {
           this._snackBar.open("Utilisateur ne pas creer "+ `${err.error}`,'', {
             duration: 3000,
@@ -180,4 +185,5 @@ selected(event: MatAutocompleteSelectedEvent): void {
       });
     }
   }
+
 }

@@ -35,6 +35,17 @@ getAllUsers():Observable<any>{
  return this.http.get<any>(host+'/cleansports/api/users');
 }
 
+getUsersTeam(name:string): Observable<any>{
+ 
+  let host= environment.host;
+  return this.http.get(host+'/cleansports/api/users/searchuser?name='+ name);
+}
+
+
+
+
+
+
 
 getUserNames()
 {

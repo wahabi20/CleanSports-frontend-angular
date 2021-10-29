@@ -20,4 +20,13 @@ export class TeamService {
 
 }
 
+
+getTeam()
+{
+  let host=environment.host;
+  return this.http.get<any>(host+"/cleansports/api/team/list");
+
+}
+
+
 }

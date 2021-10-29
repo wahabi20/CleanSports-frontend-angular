@@ -39,25 +39,34 @@
                 </div>
                
                  
+           
                
+                 <table class="table  table-striped mt-5">
+                    <thead>
+                        <tr>
+                          <th>Identifiant</th>
+                          <th>Image</th>
+                          <th>Nom</th>
+                          <th>Prénom</th>
+                          <th>Address</th>
+                          <th>E-mail</th>
+                          <th>Status</th>
+                          <th></th>
+                          <th></th>
+                          <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <app-user-item 
+                          [user]="u"  
+                          (userEventEmitter)="onActionEvent($event)"
+                          *ngFor="let u of result.data" style="display: contents">
 
-                 <table class="table mt-5">
-                <thead>
-                    <tr>
-                    <th>Identifiant</th><th>Image</th><th>Nom</th><th>Prénom</th><th>Address</th><th>E-mail</th><th>Status</th><th></th><th></th><th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  
-                  <app-user-item 
-                      [user]="u"  
-                      (userEventEmitter)="onActionEvent($event)"
-                      *ngFor="let u of result.data" style="display: contents">
-
-                  </app-user-item>
-                </tbody>
+                      </app-user-item>
+                    </tbody>
                
-            </table>
+                  </table>
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-end">
