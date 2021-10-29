@@ -191,9 +191,9 @@
                       <mat-expansion-panel-header>
                         <mat-panel-title>
   
-                          <img   mat-card-avatar src="{{team.logo}}">
-                          <p>{{team.name}}</p> 
-                          <p>{{team.pts}}</p> 
+                          <img  style="margin-top: 4px;"  mat-card-avatar src="{{team.logo}}">
+                          <p style="margin-left: 15px; margin-top: 12px;">{{team.name}}</p> 
+                          <p style="margin-left: 120px; margin-top: 12px;">{{team.pts}}</p> 
                         </mat-panel-title>
                         <mat-panel-description>
                          
@@ -202,10 +202,10 @@
                      
                          
                          <div *ngFor="let player of team.userId">
-                           <img   mat-card-avatar src="{{player.logo}}"> 
-                            <p>{{player.first_Name}}</p>
-                            <p>{{player.last_Name}}</p>
-                            <p>{{player.pts}}</p>
+                           <img  style="margin-top: 4px;"  mat-card-avatar src="{{player.logo}}"> 
+                            <p style="margin-top: 12px;">{{player.first_Name}}</p>
+                            <p style="margin-top: 12px;  margin-right: 10px;">{{player.last_Name}}</p>
+                            <p style="margin-left: 2px; margin-top: 12px;">{{player.pts}}</p>
           
                          </div>
                    
