@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -10,7 +10,19 @@ import { User } from 'src/app/models/model.user';
 import { TeamService } from 'src/app/services/team/team.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { ActionEvent, TeamActionsTypes } from 'src/app/state/team.state';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
+
 @Component({
   selector: 'app-add-team',
   templateUrl: './add-team.component.html',
@@ -40,8 +52,11 @@ export class AddTeamComponent implements OnInit {
   @ViewChild('fruitInput')
   fruitInput!: ElementRef<HTMLInputElement>;
 
+  @Output() teamEventEmitter : EventEmitter<ActionEvent> = new EventEmitter();
+
   constructor(
     public dialogRef: MatDialogRef<AddTeamComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any ,
     private _userService: UserService,
     private fb: FormBuilder,
     private _teamService:TeamService,
@@ -51,12 +66,37 @@ export class AddTeamComponent implements OnInit {
 
   ngOnInit(): void {
   
+
+    this.data.player = this.playerslistID;
+
+
      this.getUserTeam();
 
      console.log("jouers >>>", this.defaultplayers[1])
     // console.log("index >>>", this.defaultplayers[0])
-  
+    
+    console.log("nb from dialog>>>", this.teamNumberFormControl.value)
   }
+
+
+
+ teamNameFormControl = new FormControl('', [
+   Validators.required, Validators.minLength(6)
+
+ ]);
+
+ teamNumberFormControl = new FormControl('', [
+   Validators.required, 
+
+ ]);
+ teamPlayersFormControl = new FormControl('', [
+  Validators.required, 
+
+]);
+
+
+ matcher = new MyErrorStateMatcher();
+
 
 
 
@@ -80,13 +120,6 @@ export class AddTeamComponent implements OnInit {
 
 
 
-
-  addTeamForm: FormGroup = this.fb.group({
-
-    name: ['', [Validators.required, Validators.minLength(6)]],
-    nb: ['', [Validators.required],],
-    player: ['', [Validators.required],],
-  })
 
 
 
@@ -134,7 +167,7 @@ selected(event: MatAutocompleteSelectedEvent): void {
   onAddTeam()
   {
 
-   
+   /*
     console.log("data from addTeamForm", this.addTeamForm);
     console.log("liste des id from add Team >>>", this.playerslistID[0])
     console.log("liste des id from add Team >>>", this.playerslistID[1])
@@ -144,7 +177,7 @@ selected(event: MatAutocompleteSelectedEvent): void {
     {
        console.log("formulaire valider")
       
-        let id = localStorage.getItem('id')
+       
         let TeamData = {
           "name": this.addTeamForm.value.name,
           "nbPlayer": this.addTeamForm.value.nb,
@@ -154,7 +187,7 @@ selected(event: MatAutocompleteSelectedEvent): void {
         this._teamService.addTeam(TeamData).subscribe(resp => {
           console.log("response >>>", resp)
 
-         // this.dialogRef.close();
+          this.dialogRef.close();
         //  this._router.navigate(['/home']);
 
           this._snackBar.open("Votre equipe est creer avec success",'', {
@@ -185,5 +218,7 @@ selected(event: MatAutocompleteSelectedEvent): void {
       });
     }
   }
+*/
 
+}
 }

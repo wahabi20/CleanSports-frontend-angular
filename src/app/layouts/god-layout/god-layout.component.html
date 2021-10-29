@@ -126,7 +126,7 @@
               </button>
             </div>
             <div>
-              <button mat-button (click)="gotoAddTeam()">
+              <button mat-button>
                 <mat-icon>add_circle</mat-icon>
                 <span  style="margin-left: 10px ;font-size: 15px;"  (click)="gotoAddTeam()">Créer une equipe</span>
               </button>
@@ -182,10 +182,45 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div *ngFor="let team of teamList" >
-                <img   mat-card-avatar src="{{teamList.logo}}">
-                <p>{{teamList.name}}</p> 
-                <p>{{teamList.pts}}</p> 
-              
+
+
+                  <!------------------->
+
+                  <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+  
+                          <img   mat-card-avatar src="{{team.logo}}">
+                          <p>{{team.name}}</p> 
+                          <p>{{team.pts}}</p> 
+                        </mat-panel-title>
+                        <mat-panel-description>
+                         
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                     
+                         
+                         <div *ngFor="let player of team.userId">
+                           <img   mat-card-avatar src="{{player.logo}}"> 
+                            <p>{{player.first_Name}}</p>
+                            <p>{{player.last_Name}}</p>
+                            <p>{{player.pts}}</p>
+          
+                         </div>
+                   
+                     
+                    </mat-expansion-panel>
+                   
+                  </mat-accordion>
+          
+
+
+
+
+                  <!-------------------------->
+
+
             </div>
            
           </mat-expansion-panel>
@@ -196,37 +231,7 @@
 
       </div>
 
-      <div>
-       
-
-
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <mat-icon style="margin-top: -2px; margin-right: 13px;">directions_run</mat-icon>
-                Vos joueurs
-              </mat-panel-title>
-              <mat-panel-description>
-               
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div *ngFor="let player of playerList">
-              
-                <img   mat-card-avatar src="{{player.logo}}">
-                
-                <p>{{player.first_Name}}</p> 
-                <p>{{player.last_Name}}</p> 
-                <p>{{player.pts}}</p> 
-            </div>
-           
-          </mat-expansion-panel>
-         
-        </mat-accordion>
-
-
-
-      </div>
+  
 
       <div>
         <mat-icon>star_border</mat-icon>

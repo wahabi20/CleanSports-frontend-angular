@@ -9,6 +9,7 @@ import { AddTeamComponent } from 'src/app/god/add-team/add-team.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TeamService } from 'src/app/services/team/team.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { ActionEvent, TeamActionsTypes } from 'src/app/state/team.state';
 //import {AuthService, UserData} from '../../services/auth.service';
 
 @Component({
@@ -29,7 +30,7 @@ export class GodLayoutComponent implements OnInit {
   subs: Subscription[] = [];
   posts: any[] = [];
   panelOpenState = false;
-  teamList: any;
+  teamList: any[]=[];
   playerList:any[] = new Array();
 
   constructor(public _authService: AuthService,
@@ -59,6 +60,7 @@ export class GodLayoutComponent implements OnInit {
 */
   
    this.getUserTeam();
+   
 }
 
 
@@ -68,8 +70,8 @@ export class GodLayoutComponent implements OnInit {
   getUserTeam()
   {
     this._teamService.getTeam().subscribe(response => {
-      console.log("team list >>>",response[0].team.teamId[0])
-       this.teamList = response[0].team.teamId[0];
+      console.log("team list >>>",response[0].team.teamId)
+       this.teamList = response[0].team.teamId;
        this.playerList = response[0].team.teamId.userId;
        const data:any[] = response[0].team.teamId;
        data.filter(
@@ -130,10 +132,13 @@ export class GodLayoutComponent implements OnInit {
   {
     this._router.navigate(['/Dashboard']);
   }
+
+
   /* dialog  */
   gotoAddTeam()
   {
- 
+    
+   // console.log("list first>>",list)
     const dialogRef = this.dialog.open(AddTeamComponent, {
       width: '600px',
       height:'600px',
@@ -145,9 +150,54 @@ export class GodLayoutComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe(result => {
       console.log("data from dialog add team >>>", result)
-   //   this._router.navigate(['/home']);
-        this._router.navigate(['/home']);
-    });
+   
+
+      let nbEq = result.nb;
+      let listLenght = result.player.length;
+      if(nbEq == listLenght)
+      {
+         console.log("formulaire valider")
+        
+         
+          let TeamData = {
+            "name": result.name,
+            "nbPlayer": result.nb,
+            "userId": result.player
+          }
+          
+          this._teamService.addTeam(TeamData).subscribe(resp => {
+            console.log("response >>>", resp)
+  
+  
+            this._snackBar.open("Votre equipe est creer avec success",'', {
+              duration: 4000,
+              verticalPosition: 'top',
+              horizontalPosition: 'end',
+              panelClass: ['mat-toolbar','mat-primary']
+          });
+  
+          
+          }, err => {
+            this._snackBar.open("Utilisateur ne pas creer "+ `${err.error}`,'', {
+              duration: 4000,
+              verticalPosition: 'top',
+              horizontalPosition: 'end',
+              panelClass: ['mat-toolbar','mat-warn']
+          });
+          })
+          
+         
+      }else{
+          console.log("formulaire non valider")
+          this._snackBar.open(" Nombre des jouers invalide ",'', {
+            duration: 4000,
+            verticalPosition: 'top',
+            horizontalPosition: 'end',
+            panelClass: ['mat-toolbar','mat-warn']
+        });
+      }
+    })
+
 
   }
 
@@ -171,5 +221,7 @@ export class GodLayoutComponent implements OnInit {
   {
     this._router.navigate(['/home'])
   }
+
+
 
 }
