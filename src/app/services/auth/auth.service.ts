@@ -47,6 +47,8 @@ isAdminUser()
 }
 
 logoutUser(){
+  localStorage.removeItem('first_Name');
+  localStorage.removeItem('last_Name');
   localStorage.removeItem('token');
   localStorage.removeItem('isAdmin');
   localStorage.removeItem('id');

@@ -17,6 +17,8 @@ import { TeamComponent } from './god/team/team.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { DashLayoutComponent } from './layouts/dash-layout/dash-layout.component';
 import { GodLayoutComponent } from './layouts/god-layout/god-layout.component';
+import { ProfileLayoutComponent } from './layouts/profile-layout/profile-layout.component';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 
 const routes: Routes = [
 
@@ -92,6 +94,29 @@ const routes: Routes = [
   ]
 },
 
+
+// User profile
+{
+  path:'',
+  component:ProfileLayoutComponent,
+  children: [
+    {
+      path: '',
+      redirectTo: '/Profile',
+      pathMatch: 'full'
+
+    },
+    { path: 'Profile', component: UserProfileComponent },
+    
+   
+  
+  
+    {
+      path: 'Profile',
+      loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+    }
+  ]
+},
 
 
 

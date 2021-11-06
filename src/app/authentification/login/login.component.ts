@@ -59,6 +59,9 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(dataUser).subscribe(resp => {
       console.log('resp from loginUserData>>>', resp);
       this.isLoading = false;
+       localStorage.setItem('first_Name',resp.user.first_Name)
+       localStorage.setItem('last_Name',resp.user.last_Name);
+       
        localStorage.setItem('token',resp.token)
        localStorage.setItem('isAdmin',resp.user.isAdmin);
        localStorage.setItem('id',resp.user._id);

@@ -99,8 +99,8 @@
         <img
           alt=""
           mat-card-avatar
-          src="assets/img2.jpg">
-          <span class="name">Wahabi malek</span>
+          src="assets/img2.jpg" (click)="gotoProfile()" style="cursor: pointer;">
+          <span class="name"  (click)="gotoProfile()">{{firstName}} {{lastName}}</span>
         <span class="name"></span>
       </div>
       <div>

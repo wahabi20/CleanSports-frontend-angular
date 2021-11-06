@@ -32,6 +32,8 @@ export class GodLayoutComponent implements OnInit {
   panelOpenState = false;
   teamList: any[]=[];
   playerList:any[] = new Array();
+  firstName:any;
+  lastName:any;
 
   constructor(public _authService: AuthService,
               public dialog: MatDialog,
@@ -60,11 +62,17 @@ export class GodLayoutComponent implements OnInit {
 */
   
    this.getUserTeam();
-   
+   this.getUserCredintials()
+  
 }
 
 
+getUserCredintials()
+{
+   this.firstName = localStorage.getItem('first_Name');
+   this.lastName = localStorage.getItem('last_Name');
 
+}
 
   
   getUserTeam()
@@ -222,6 +230,11 @@ export class GodLayoutComponent implements OnInit {
     this._router.navigate(['/home'])
   }
 
+
+  gotoProfile()
+  {
+    this._router.navigate(['/Profile'])
+  }
 
 
 }
