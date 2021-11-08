@@ -11,6 +11,7 @@ import { TeamService } from 'src/app/services/team/team.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { ActionEvent, TeamActionsTypes } from 'src/app/state/team.state';
 //import {AuthService, UserData} from '../../services/auth.service';
+import { io } from 'socket.io-client';
 
 @Component({
   selector: 'app-god-layout',
@@ -34,6 +35,7 @@ export class GodLayoutComponent implements OnInit {
   playerList:any[] = new Array();
   firstName:any;
   lastName:any;
+  socket:any;
 
   constructor(public _authService: AuthService,
               public dialog: MatDialog,
@@ -47,24 +49,24 @@ export class GodLayoutComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    
-    /*
-    this.subs.push(this.postService.getAllPosts().subscribe(async (posts) => {
-      this.posts = posts;
-      console.log(posts);
-      
-    }));
-
-    this.subs.push(this.authService.CurrentUser().subscribe(user => {
-      this.user = user;
-      console.log(user);
-    }));
-*/
   
    this.getUserTeam();
-   this.getUserCredintials()
-  
+   this.getUserCredintials();
+   this.getMessages();
 }
+
+
+
+/**************Socket test **************** */
+
+getMessages() {
+    this.socket = io('http://localhost:3000');
+    this.socket.on('connection');
+}
+  
+/****************************** */
+
+
 
 
 getUserCredintials()

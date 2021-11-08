@@ -29,5 +29,13 @@
 
   </div>
 
+ <form  class="container" [formGroup]="loginForm"  #form="ngForm"     name="loginForm">
+   <input formControlName="message" matInput type="text" required />
+   <button class="btn btn-primary"  (click)="sendtext()" >send</button>
+   <h1>{{message}}</h1>
+ </form>
+ 
+  
+
 </div>
 
